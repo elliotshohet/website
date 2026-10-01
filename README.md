@@ -12,7 +12,7 @@ Vercel hosts the site with automatic production deployments from main.
 
 - Production: https://elliotshohet.com
 - Alternate domain: https://www.elliotshohet.com
-- GitHub: https://github.com/elliotshohet/elliotshohet-site (private)
+- GitHub: https://github.com/elliotshohet/website (public)
 - Vercel project: elliotshohet-site in eshohets-projects
 - Production branch: main
 
