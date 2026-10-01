@@ -44,7 +44,7 @@ export default function Home() {
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(profile).replace(/</g, "\\u003c") }} />
     <header className="site-header">
       <Link className="wordmark" href="/" aria-label="Elliot Shohet home">es<span>.</span></Link>
-      <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#about">About</a><a href={linkedin} rel="me">LinkedIn ↗</a><ThemeToggle /></nav>
+      <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#about">About</a><a href={linkedin} rel="me">LinkedIn ↗</a><a href={github} rel="me">GitHub ↗</a><ThemeToggle /></nav>
     </header>
     <main id="main">
       <section className="hero" aria-labelledby="intro-heading">
