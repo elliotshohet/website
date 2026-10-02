@@ -25,7 +25,7 @@ const profile = {
   mainEntity: {
     "@type": "Person", "@id": "https://elliotshohet.com/#person", name: "Elliot Shohet",
     url: "https://elliotshohet.com", jobTitle: "Senior Software Engineer",
-    description: "Senior software engineer in Los Angeles, open to local and remote roles. Building web, mobile, and AI-powered products.",
+    description: "Senior software engineer open to senior software engineering roles, including remote opportunities. Building web, mobile, and AI-powered products.",
     sameAs: [linkedin, github], email: "elliot.shohet@gmail.com",
     homeLocation: { "@type": "Place", name: "Los Angeles Metropolitan Area" },
     alumniOf: { "@type": "CollegeOrUniversity", name: "University of California, Davis" },
@@ -39,7 +39,7 @@ export default function Home() {
     <main id="main">
       <section className="hero" aria-labelledby="intro-heading">
         <div className="hero-copy">
-          <p className="eyebrow"><span className="status-dot" /> Open to roles in Los Angeles & remote</p>
+          <p className="eyebrow"><span className="status-dot" /> Open to senior software engineering roles · Remote welcome</p>
           <h1 id="intro-heading">Elliot Shohet<span>.</span></h1>
           <p className="hero-title">Senior Software<br />Engineer.</p>
           <p className="intro">I take products from zero to one—from ideation and architecture to launch and production. With founding-engineer experience across web, mobile, and AI, I own the details end to end and turn ideas into working products.</p>
@@ -72,7 +72,7 @@ export default function Home() {
       </section>
       <section id="contact" className="contact section" aria-labelledby="contact-heading">
         <p className="eyebrow">04 / Start a conversation</p><h2 id="contact-heading">Let’s build<br />something useful<span>.</span></h2>
-        <p>Hiring a senior engineer or exploring a project? Tell me what you’re building. I’m based in Los Angeles and open to remote roles.</p>
+        <p>Hiring a senior engineer or exploring a project? Tell me what you’re building. I’m open to senior software engineering roles, including remote opportunities.</p>
         <div className="actions"><a className="button primary" href={email} data-track="email_click">Email Elliot ↗</a><a className="button secondary" href={linkedin}>Connect on LinkedIn ↗</a></div>
         <a className="contact-email" href={email} data-track="email_click">elliot.shohet@gmail.com</a>
       </section>

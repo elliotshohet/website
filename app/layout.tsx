@@ -4,8 +4,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ConversionTracking } from "./conversion-tracking";
 import { SiteTheme } from "./theme";
 import "./globals.css";
-const title = "Elliot Shohet | Senior Software Engineer · Los Angeles & Remote";
-const description = "Elliot Shohet is a senior software engineer owning web, mobile, and AI products end to end—from zero-to-one ideation to production. Open to Los Angeles and remote roles.";
+const title = "Elliot Shohet | Senior Software Engineer · Open to Remote Roles";
+const description = "Elliot Shohet is a senior software engineer owning web, mobile, and AI products end to end—from zero-to-one ideation to production. Open to senior software engineering roles, including remote opportunities.";
 export const metadata: Metadata = {
   verification: process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : undefined,
   metadataBase: new URL("https://elliotshohet.com"), title, description,
