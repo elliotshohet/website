@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ConversionTracking } from "./conversion-tracking";
 import { SiteTheme } from "./theme";
 import "./globals.css";
 const title = "Elliot Shohet | Senior Software Engineer · Los Angeles & Remote";
-const description = "Elliot Shohet is a senior software engineer building web, mobile, and AI products with TypeScript, React, Next.js, Node.js, and PostgreSQL. Los Angeles or remote.";
+const description = "Elliot Shohet is a senior software engineer owning web, mobile, and AI products end to end—from zero-to-one ideation to production. Open to Los Angeles and remote roles.";
 export const metadata: Metadata = {
+  verification: process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : undefined,
   metadataBase: new URL("https://elliotshohet.com"), title, description,
   applicationName: "Elliot Shohet", authors: [{ name: "Elliot Shohet", url: "https://elliotshohet.com" }],
   alternates: { canonical: "/" }, robots: { index: true, follow: true },
@@ -13,5 +15,5 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title, description },
 };
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" data-theme="dark" suppressHydrationWarning><body><SiteTheme><a className="skip-link" href="#main">Skip to content</a>{children}</SiteTheme><Analytics /><SpeedInsights /></body></html>;
+  return <html lang="en" data-scroll-behavior="smooth" data-theme="dark" suppressHydrationWarning><body><SiteTheme><a className="skip-link" href="#main">Skip to content</a>{children}</SiteTheme><Analytics /><SpeedInsights /><ConversionTracking /></body></html>;
 }

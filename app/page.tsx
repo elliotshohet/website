@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ThemeToggle } from "./theme";
+import { SiteHeader } from "./site-header";
 
 const linkedin = "https://www.linkedin.com/in/elliotshohet/";
 const github = "https://github.com/elliotshohet";
@@ -19,14 +19,6 @@ const experience = [
     description: "Built a cross-platform Electron desktop application with React and Redux, Node.js identity-based access controls, production blockchain infrastructure, and AWS Lambda services.",
     tags: ["React", "Electron", "Node.js", "AWS"] },
 ];
-const earlier = [
-  ["Software Development Consultant", "2020 — 2021", "Advised clients on full-stack decentralized applications and blockchain systems using TypeScript and Solidity."],
-  ["BlockchainForums.info", "2017 — 2018", "Developed Solidity settlement contracts and advised clients including Trade.io, Sapien Network, and APT Systems."],
-  ["Ooma", "2017", "Containerized and stress-tested applications with Docker Swarm and profiled a large Java codebase for performance bottlenecks."],
-  ["Weebly", "2015", "Automated API client generation in 13 languages and implemented REST API endpoints and sanity checks."],
-  ["ShrinkOnce", "2012 — 2014", "Built a Laravel product and optimized bandwidth costs and AWS instance startup times."],
-  ["Greekdrop", "2012 — 2014", "Built a custom ecommerce portal and automated inventory and accounting workflows as CTO."],
-];
 const profile = {
   "@context": "https://schema.org", "@type": "ProfilePage", "@id": "https://elliotshohet.com/#profile",
   url: "https://elliotshohet.com", name: "Elliot Shohet — Senior Software Engineer",
@@ -43,35 +35,29 @@ const profile = {
 export default function Home() {
   return <div className="site">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(profile).replace(/</g, "\\u003c") }} />
-    <header className="site-header">
-      <Link className="wordmark" href="/" aria-label="Elliot Shohet home">es<span>.</span></Link>
-      <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#about">About</a><a href={linkedin} rel="me">LinkedIn ↗</a><a href={github} rel="me">GitHub ↗</a><ThemeToggle /></nav>
-    </header>
+    <SiteHeader />
     <main id="main">
       <section className="hero" aria-labelledby="intro-heading">
         <div className="hero-copy">
           <p className="eyebrow"><span className="status-dot" /> Open to roles in Los Angeles & remote</p>
           <h1 id="intro-heading">Elliot Shohet<span>.</span></h1>
-          <p className="hero-title">Senior Software Engineer</p>
-          <p className="intro">I’m a senior software engineer who turns ideas into working products, from the first line of code to the systems behind them. Web, mobile, and AI — built end to end.</p>
-          <div className="actions"><a className="button primary" href={email}>Let’s talk <span aria-hidden="true">↗</span></a><a className="button secondary" href="/elliot-shohet-resume.pdf">Download résumé <span aria-hidden="true">↓</span></a></div>
+          <p className="hero-title">Senior Software<br />Engineer.</p>
+          <p className="intro">I take products from zero to one—from ideation and architecture to launch and production. With founding-engineer experience across web, mobile, and AI, I own the details end to end and turn ideas into working products.</p>
+          <div className="actions"><a className="button primary" href={email} data-track="email_click">Email me about a role or project ↗</a><a className="button secondary" href="#work">See my work ↓</a></div>
         </div>
-        <aside className="profile-card" aria-label="Engineering focus">
-          <div className="card-top"><span>WHAT I BUILD</span><Image className="profile-photo" src="/elliot-shohet-headshot.png" alt="Elliot Shohet" width={160} height={160} sizes="160px" preload /></div>
-          <p className="card-heading">From zero<br />to shipped<span>.</span></p>
-          <dl><div><dt>Web</dt><dd>React · Next.js · TypeScript</dd></div><div><dt>Mobile</dt><dd>React Native · Expo</dd></div><div><dt>Systems</dt><dd>Node.js · PostgreSQL · AWS</dd></div><div><dt>AI</dt><dd>Model integrations · Image workflows</dd></div></dl>
-          <a href={github} rel="me">Find me on GitHub <span aria-hidden="true">↗</span></a>
+        <aside className="hero-portrait" aria-label="Elliot Shohet portrait">
+          <Image src="/elliot-shohet-headshot.png" alt="Elliot Shohet" width={640} height={640} sizes="(max-width: 650px) 88vw, 420px" preload />
+          <p>Zero to one. Idea to production.</p>
         </aside>
       </section>
       <div className="intro-strip"><p>Product-minded engineering.<br /><strong>Across the whole stack.</strong></p><p>TypeScript / React / Next.js / Node.js / PostgreSQL</p></div>
       <section id="work" className="section" aria-labelledby="work-heading">
         <div className="section-heading"><p className="eyebrow">01 / Selected work & experience</p><h2 id="work-heading">Built with ownership.</h2><p>From AI-powered nutrition to payment infrastructure, I work across interfaces, services, and the systems that connect them.</p></div>
-        <div className="experience-list">{experience.map((job, index) => <article className="experience" key={job.company}>
+        <div className="experience-list">{experience.slice(0, 3).map((job, index) => <article className={index === 0 ? "experience experience-burn" : "experience"} key={job.company}>
           <div className="experience-index">0{index + 1}</div><div className="experience-label"><h3>{job.company}</h3><p>{job.role}</p><span>{job.dates}</span></div>
-          <div><p className="experience-description">{job.description}</p><ul className="tags" aria-label={job.company + " technologies"}>{job.tags.map(tag => <li key={tag}>{tag}</li>)}</ul></div>
-        </article>)}</div>
-        <h3 className="earlier-heading">More of the journey</h3><div className="earlier-grid">{earlier.map(([company, dates, description]) => <article key={company}><span className="eyebrow">{dates}</span><h4>{company}</h4><p>{description}</p></article>)}</div>
-        <a className="text-link" href={linkedin}>View my full experience on LinkedIn ↗</a>
+          <div><p className="experience-description">{job.description}</p><ul className="tags" aria-label={job.company + " technologies"}>{job.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>{index < 2 && <Link className="text-link" href={index === 0 ? "/work/burn" : "/work/niftys"} data-track="project_open">View project details →</Link>}</div>
+        {index === 0 && <figure className="work-product-photo"><Link href="/work/burn" data-track="project_open"><Image src="/projects/burn-dashboard.png" alt="Burn app dashboard showing calories, macronutrients, and meal tracking" width={660} height={1370} sizes="(max-width: 650px) 220px, 260px" /></Link><figcaption>Burn · AI-powered nutrition tracking</figcaption></figure>}</article>)}</div>
+        <div className="career-summary"><h3>More of the journey</h3><p>Earlier work spans identity and access controls at i2Chain, performance engineering at Ooma, API tooling at Weebly, and ecommerce products.</p><a className="text-link" href="/elliot-shohet-resume.pdf" data-track="resume_download">Download the full résumé ↓</a><a className="text-link" href={linkedin}>Full experience on LinkedIn ↗</a></div>
       </section>
       <section id="projects" className="section" aria-labelledby="projects-heading">
         <p className="eyebrow">02 / Independent & university projects</p><h2 id="projects-heading">Curiosity, put to work.</h2>
@@ -86,9 +72,9 @@ export default function Home() {
       </section>
       <section id="contact" className="contact section" aria-labelledby="contact-heading">
         <p className="eyebrow">04 / Start a conversation</p><h2 id="contact-heading">Let’s build<br />something useful<span>.</span></h2>
-        <p>I’m open to software engineering opportunities in Los Angeles or remote. Hiring for your team? I’d love to hear what you’re building.</p>
-        <div className="actions"><a className="button primary" href={email}>Email Elliot ↗</a><a className="button secondary" href={linkedin}>Connect on LinkedIn ↗</a></div>
-        <a className="contact-email" href={email}>elliot.shohet@gmail.com</a>
+        <p>Hiring a senior engineer or exploring a project? Tell me what you’re building. I’m based in Los Angeles and open to remote roles.</p>
+        <div className="actions"><a className="button primary" href={email} data-track="email_click">Email Elliot ↗</a><a className="button secondary" href={linkedin}>Connect on LinkedIn ↗</a></div>
+        <a className="contact-email" href={email} data-track="email_click">elliot.shohet@gmail.com</a>
       </section>
     </main>
     <footer><p>Elliot Shohet · Senior Software Engineer</p><div><a href={linkedin} rel="me">LinkedIn</a><a href={github} rel="me">GitHub</a><a href="#main">Back to top ↑</a></div></footer>
