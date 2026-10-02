@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SiteTheme } from "./theme";
 import "./globals.css";
-const title = "Elliot Shohet | Software Engineer · Los Angeles & Remote";
-const description = "Elliot Shohet is a full-stack software engineer building web, mobile, and AI products with TypeScript, React, Next.js, Node.js, and PostgreSQL. Los Angeles or remote.";
+const title = "Elliot Shohet | Senior Software Engineer · Los Angeles & Remote";
+const description = "Elliot Shohet is a senior software engineer building web, mobile, and AI products with TypeScript, React, Next.js, Node.js, and PostgreSQL. Los Angeles or remote.";
 export const metadata: Metadata = {
   metadataBase: new URL("https://elliotshohet.com"), title, description,
   applicationName: "Elliot Shohet", authors: [{ name: "Elliot Shohet", url: "https://elliotshohet.com" }],

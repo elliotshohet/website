@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ThemeToggle } from "./theme";
 
 const linkedin = "https://www.linkedin.com/in/elliotshohet/";
@@ -28,11 +29,11 @@ const earlier = [
 ];
 const profile = {
   "@context": "https://schema.org", "@type": "ProfilePage", "@id": "https://elliotshohet.com/#profile",
-  url: "https://elliotshohet.com", name: "Elliot Shohet — Full Stack Software Engineer",
+  url: "https://elliotshohet.com", name: "Elliot Shohet — Senior Software Engineer",
   mainEntity: {
     "@type": "Person", "@id": "https://elliotshohet.com/#person", name: "Elliot Shohet",
-    url: "https://elliotshohet.com", jobTitle: "Full Stack Software Engineer",
-    description: "Software engineer in Los Angeles, open to local and remote roles. Building web, mobile, and AI-powered products.",
+    url: "https://elliotshohet.com", jobTitle: "Senior Software Engineer",
+    description: "Senior software engineer in Los Angeles, open to local and remote roles. Building web, mobile, and AI-powered products.",
     sameAs: [linkedin, github], email: "elliot.shohet@gmail.com",
     homeLocation: { "@type": "Place", name: "Los Angeles Metropolitan Area" },
     alumniOf: { "@type": "CollegeOrUniversity", name: "University of California, Davis" },
@@ -51,12 +52,12 @@ export default function Home() {
         <div className="hero-copy">
           <p className="eyebrow"><span className="status-dot" /> Open to roles in Los Angeles & remote</p>
           <h1 id="intro-heading">Elliot Shohet<span>.</span></h1>
-          <p className="hero-title">Full stack.<br />Full ownership.</p>
-          <p className="intro">I’m a software engineer who turns ideas into working products, from the first line of code to the systems behind them. Web, mobile, and AI — built end to end.</p>
+          <p className="hero-title">Senior Software Engineer</p>
+          <p className="intro">I’m a senior software engineer who turns ideas into working products, from the first line of code to the systems behind them. Web, mobile, and AI — built end to end.</p>
           <div className="actions"><a className="button primary" href={email}>Let’s talk <span aria-hidden="true">↗</span></a><a className="button secondary" href="/elliot-shohet-resume.pdf">Download résumé <span aria-hidden="true">↓</span></a></div>
         </div>
         <aside className="profile-card" aria-label="Engineering focus">
-          <div className="card-top"><span>WHAT I BUILD</span><span aria-hidden="true">✳</span></div>
+          <div className="card-top"><span>WHAT I BUILD</span><Image className="profile-photo" src="/elliot-shohet-headshot.png" alt="Elliot Shohet" width={160} height={160} sizes="160px" preload /></div>
           <p className="card-heading">From zero<br />to shipped<span>.</span></p>
           <dl><div><dt>Web</dt><dd>React · Next.js · TypeScript</dd></div><div><dt>Mobile</dt><dd>React Native · Expo</dd></div><div><dt>Systems</dt><dd>Node.js · PostgreSQL · AWS</dd></div><div><dt>AI</dt><dd>Model integrations · Image workflows</dd></div></dl>
           <a href={github} rel="me">Find me on GitHub <span aria-hidden="true">↗</span></a>
@@ -81,7 +82,7 @@ export default function Home() {
       </section>
       <section id="about" className="section about" aria-labelledby="about-heading">
         <div><p className="eyebrow">03 / A little about me</p><h2 id="about-heading">A builder<br />from the start.</h2></div>
-        <div className="about-copy"><p>I’m a full-stack software engineer based in the Los Angeles area. I started programming at 12, launched technology companies, and went on to earn a B.S. in Computer Science from the University of California, Davis.</p><p>My specialty is taking a product from scratch to launch, or stepping into an existing system and taking ownership. My work spans React and TypeScript interfaces, Node.js services, relational databases, cross-platform mobile apps, and AI integrations.</p><p>I also bring experience in smart contracts, payment settlement, modular SDK design, cloud infrastructure, and leading small engineering teams.</p><div className="education"><span className="eyebrow">Education</span><strong>University of California, Davis</strong><span>B.S. Computer Science · 2012–2017</span></div></div>
+        <div className="about-copy"><p>I’m a senior software engineer based in the Los Angeles area. I started programming at 12, launched technology companies, and went on to earn a B.S. in Computer Science from the University of California, Davis.</p><p>My specialty is taking a product from scratch to launch, or stepping into an existing system and taking ownership. My work spans React and TypeScript interfaces, Node.js services, relational databases, cross-platform mobile apps, and AI integrations.</p><p>I also bring experience in smart contracts, payment settlement, modular SDK design, cloud infrastructure, and leading small engineering teams.</p><div className="education"><span className="eyebrow">Education</span><strong>University of California, Davis</strong><span>B.S. Computer Science · 2012–2017</span></div></div>
       </section>
       <section id="contact" className="contact section" aria-labelledby="contact-heading">
         <p className="eyebrow">04 / Start a conversation</p><h2 id="contact-heading">Let’s build<br />something useful<span>.</span></h2>
@@ -90,6 +91,6 @@ export default function Home() {
         <a className="contact-email" href={email}>elliot.shohet@gmail.com</a>
       </section>
     </main>
-    <footer><p>Elliot Shohet · Software Engineer</p><div><a href={linkedin} rel="me">LinkedIn</a><a href={github} rel="me">GitHub</a><a href="#main">Back to top ↑</a></div></footer>
+    <footer><p>Elliot Shohet · Senior Software Engineer</p><div><a href={linkedin} rel="me">LinkedIn</a><a href={github} rel="me">GitHub</a><a href="#main">Back to top ↑</a></div></footer>
   </div>;
 }
