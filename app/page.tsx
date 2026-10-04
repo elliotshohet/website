@@ -75,6 +75,7 @@ export default function Home() {
         <p>Hiring a senior engineer or exploring a project? Tell me what you’re building. I’m open to senior software engineering roles, including remote opportunities.</p>
         <div className="actions"><a className="button primary" href={email} data-track="email_click">Email Elliot ↗</a><a className="button secondary" href={linkedin}>Connect on LinkedIn ↗</a></div>
         <a className="contact-email" href={email} data-track="email_click">elliot.shohet@gmail.com</a>
+        <p className="contact-detail">Discord: eshohet</p>
       </section>
     </main>
     <footer><p>Elliot Shohet · Senior Software Engineer</p><div><a href={linkedin} rel="me">LinkedIn</a><a href={github} rel="me">GitHub</a><a href="#main">Back to top ↑</a></div></footer>
