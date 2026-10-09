@@ -29,7 +29,7 @@ const profile = {
     sameAs: [linkedin, github], email: "elliot.shohet@gmail.com",
     homeLocation: { "@type": "Place", name: "Los Angeles Metropolitan Area" },
     alumniOf: { "@type": "CollegeOrUniversity", name: "University of California, Davis" },
-    knowsAbout: ["TypeScript", "Python", "React", "Next.js", "Node.js", "PostgreSQL", "AWS", "React Native", "AI integrations", "Solidity"],
+    knowsAbout: ["TypeScript", "Python", "React", "Next.js", "Node.js", "PostgreSQL", "AWS", "React Native", "AI integrations", "Multimodal AI", "AI-powered product development", "AI-assisted coding", "Prompt engineering", "Structured outputs", "Tool calling", "Retrieval-augmented generation (RAG)", "Embeddings", "LLM evaluation", "Solidity"],
   },
 };
 export default function Home() {
@@ -68,7 +68,7 @@ export default function Home() {
       </section>
       <section id="about" className="section about" aria-labelledby="about-heading">
         <div><p className="eyebrow">03 / A little about me</p><h2 id="about-heading">A builder<br />from the start.</h2></div>
-        <div className="about-copy"><p>I’m a senior software engineer based in the Los Angeles area. I started programming at 12, launched technology companies, and went on to earn a B.S. in Computer Science from the University of California, Davis.</p><p>My specialty is taking a product from scratch to launch, or stepping into an existing system and taking ownership. My work spans React and TypeScript interfaces, Node.js services, relational databases, cross-platform mobile apps, and AI integrations. My technical skills also include Python and AWS.</p><p>I also bring experience in smart contracts, payment settlement, modular SDK design, cloud infrastructure, and leading small engineering teams.</p><div className="education"><span className="eyebrow">Education</span><strong>University of California, Davis</strong><span>B.S. Computer Science · 2012–2017</span></div></div>
+        <div className="about-copy"><p>I’m a senior software engineer based in the Los Angeles area. I started programming at 12, launched technology companies, and went on to earn a B.S. in Computer Science from the University of California, Davis.</p><p>My specialty is taking a product from scratch to launch, or stepping into an existing system and taking ownership. My work spans React and TypeScript interfaces, Node.js services, relational databases, cross-platform mobile apps, and AI integrations. My technical skills also include Python and AWS.</p><p><strong>AI &amp; automation:</strong> AI API integration, multimodal AI (GPT-4V), AI-powered product development, AI-assisted coding (Codex), prompt engineering, structured outputs, tool calling, retrieval-augmented generation (RAG), embeddings, and LLM evaluation.</p><p>I also bring experience in smart contracts, payment settlement, modular SDK design, cloud infrastructure, and leading small engineering teams.</p><div className="education"><span className="eyebrow">Education</span><strong>University of California, Davis</strong><span>B.S. Computer Science · 2012–2017</span></div></div>
       </section>
       <section id="contact" className="contact section" aria-labelledby="contact-heading">
         <p className="eyebrow">04 / Start a conversation</p><h2 id="contact-heading">Let’s build<br />something useful<span>.</span></h2>
