@@ -29,7 +29,7 @@ const profile = {
     sameAs: [linkedin, github], email: "elliot.shohet@gmail.com",
     homeLocation: { "@type": "Place", name: "Los Angeles Metropolitan Area" },
     alumniOf: { "@type": "CollegeOrUniversity", name: "University of California, Davis" },
-    knowsAbout: ["TypeScript", "React", "Next.js", "Node.js", "PostgreSQL", "React Native", "AI integrations", "Solidity"],
+    knowsAbout: ["TypeScript", "Python", "React", "Next.js", "Node.js", "PostgreSQL", "AWS", "React Native", "AI integrations", "Solidity"],
   },
 };
 export default function Home() {
@@ -50,7 +50,7 @@ export default function Home() {
           <p>Zero to one. Idea to production.</p>
         </aside>
       </section>
-      <div className="intro-strip"><p>Product-minded engineering.<br /><strong>Across the whole stack.</strong></p><p>TypeScript / React / Next.js / Node.js / PostgreSQL</p></div>
+      <div className="intro-strip"><p>Product-minded engineering.<br /><strong>Across the whole stack.</strong></p><p>TypeScript / Python / React / Next.js / Node.js / PostgreSQL / AWS</p></div>
       <section id="work" className="section" aria-labelledby="work-heading">
         <div className="section-heading"><p className="eyebrow">01 / Selected work & experience</p><h2 id="work-heading">Built with ownership.</h2><p>From AI-powered nutrition to payment infrastructure, I work across interfaces, services, and the systems that connect them.</p></div>
         <div className="experience-list">{experience.slice(0, 3).map((job, index) => <article className={index === 0 ? "experience experience-burn" : "experience"} key={job.company}>
@@ -68,7 +68,7 @@ export default function Home() {
       </section>
       <section id="about" className="section about" aria-labelledby="about-heading">
         <div><p className="eyebrow">03 / A little about me</p><h2 id="about-heading">A builder<br />from the start.</h2></div>
-        <div className="about-copy"><p>I’m a senior software engineer based in the Los Angeles area. I started programming at 12, launched technology companies, and went on to earn a B.S. in Computer Science from the University of California, Davis.</p><p>My specialty is taking a product from scratch to launch, or stepping into an existing system and taking ownership. My work spans React and TypeScript interfaces, Node.js services, relational databases, cross-platform mobile apps, and AI integrations.</p><p>I also bring experience in smart contracts, payment settlement, modular SDK design, cloud infrastructure, and leading small engineering teams.</p><div className="education"><span className="eyebrow">Education</span><strong>University of California, Davis</strong><span>B.S. Computer Science · 2012–2017</span></div></div>
+        <div className="about-copy"><p>I’m a senior software engineer based in the Los Angeles area. I started programming at 12, launched technology companies, and went on to earn a B.S. in Computer Science from the University of California, Davis.</p><p>My specialty is taking a product from scratch to launch, or stepping into an existing system and taking ownership. My work spans React and TypeScript interfaces, Node.js services, relational databases, cross-platform mobile apps, and AI integrations. My technical skills also include Python and AWS.</p><p>I also bring experience in smart contracts, payment settlement, modular SDK design, cloud infrastructure, and leading small engineering teams.</p><div className="education"><span className="eyebrow">Education</span><strong>University of California, Davis</strong><span>B.S. Computer Science · 2012–2017</span></div></div>
       </section>
       <section id="contact" className="contact section" aria-labelledby="contact-heading">
         <p className="eyebrow">04 / Start a conversation</p><h2 id="contact-heading">Let’s build<br />something useful<span>.</span></h2>
