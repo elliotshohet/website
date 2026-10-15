@@ -7,16 +7,16 @@ const linkedin = "https://www.linkedin.com/in/elliotshohet/";
 const github = "https://github.com/elliotshohet";
 const email = "mailto:elliot.shohet@gmail.com";
 const experience = [
-  { company: "Burn", role: "Founding Engineer", dates: "2022 — Present",
-    description: "Building a nutrition product across web and mobile: React Native and Expo on iOS and Android, a Next.js backend, and PostgreSQL. Integrated AI meal-photo analysis, subscription billing, personalized nutrition calculations, authentication, and a ChatGPT connection through MCP.",
-    tags: ["React Native / Expo", "Next.js", "PostgreSQL", "OpenAI / MCP"] },
-  { company: "Nifty’s", role: "Founding Engineer", dates: "2021 — 2022",
+  { company: "Burn", role: "Founding Engineer", dates: "Oct 2022 — Present",
+    description: "Building a health and nutrition product across React Native/Expo, Next.js, and PostgreSQL. Added streaming AI chat with history and tools for managing meals, exercise, and goals; connected Google Health data and OAuth-protected ChatGPT tools. Implemented direct Apple/Google subscription verification, native sign-in modules, and an optimized meal-photo pipeline.",
+    tags: ["React Native / Expo", "Next.js / Prisma", "OpenAI / MCP", "Google Health", "Store billing"] },
+  { company: "Nifty’s", role: "Founding Engineer", dates: "May 2021 — Oct 2022",
     description: "Engineered smart contracts supporting more than 100,000 NFT mints. Automated deployment and verification across Ethereum and Palm, with staging and production environments for repeatable releases.",
     tags: ["Solidity", "TypeScript", "Ethereum", "CI/CD"] },
-  { company: "Hypernet Labs", role: "Founding Engineer", dates: "2019 — 2020",
+  { company: "Hypernet Labs", role: "Founding Engineer", dates: "Feb 2019 — Feb 2020",
     description: "Architected layer-two payment settlement infrastructure reaching 25 transactions per second. Built a modular SDK using dependency injection, introduced CI/CD, and managed a small engineering team and technical roadmaps.",
     tags: ["Node.js", "SDK architecture", "Payments", "Technical leadership"] },
-  { company: "i2Chain", role: "Founding Engineer", dates: "2018 — 2019",
+  { company: "i2Chain", role: "Founding Engineer", dates: "Sep 2018 — Feb 2019",
     description: "Built a cross-platform Electron desktop application with React and Redux, Node.js identity-based access controls, production blockchain infrastructure, and AWS Lambda services.",
     tags: ["React", "Electron", "Node.js", "AWS"] },
 ];
@@ -30,7 +30,7 @@ const profile = {
     sameAs: [linkedin, github], email: "elliot.shohet@gmail.com",
     homeLocation: { "@type": "Place", name: "Los Angeles Metropolitan Area" },
     alumniOf: { "@type": "CollegeOrUniversity", name: "University of California, Davis" },
-    knowsAbout: ["TypeScript", "Python", "React", "Next.js", "Node.js", "PostgreSQL", "AWS", "React Native", "AI integrations", "Multimodal AI", "AI-powered product development", "AI-assisted coding", "Prompt engineering", "Structured outputs", "Tool calling", "Retrieval-augmented generation (RAG)", "Embeddings", "LLM evaluation", "Solidity"],
+    knowsAbout: ["TypeScript", "Python", "React", "Next.js", "Node.js", "PostgreSQL", "AWS", "React Native", "AI integrations", "Multimodal AI", "AI-powered product development", "AI-assisted coding", "Prompt engineering", "Structured outputs", "Tool calling", "MCP", "OAuth", "Google Health", "Prisma", "Solidity"],
   },
 };
 export default function Home() {
@@ -45,7 +45,7 @@ export default function Home() {
           <p className="hero-role">Senior Fullstack Engineer · Startup specialist</p>
           <p className="hero-title">From idea to<br /><em>production.</em></p>
           <p className="intro">I build across the whole stack. Web, mobile, desktop, and the infrastructure behind them. A founding engineer who turns early ideas into products people can use.</p>
-          <div className="actions"><a className="button primary" href={email} data-track="email_click"><Icon name="mail" />Let’s talk <Icon name="external" /></a><a className="button secondary" href="#work">Explore my work <Icon name="down" /></a></div>
+          <div className="actions"><a className="button primary" href={email} data-track="email_click"><Icon name="mail" />Let’s talk <Icon name="external" /></a><a className="button secondary" href="/elliot-shohet-resume.pdf" download data-track="resume_download"><Icon name="download" />Download résumé</a><a className="button secondary" href="#work">Explore my work <Icon name="down" /></a></div>
         </div>
         <aside className="hero-portrait" aria-label="Elliot Shohet portrait">
           <div className="portrait-label"><span><Icon name="pin" /> Based in Los Angeles</span><span>34.05° N / 118.24° W</span></div>
