@@ -1,0 +1,88 @@
+/* Progressive motion: base layouts and all content remain visible without it. */
+@keyframes portfolio-enter {
+  from { opacity: .35; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes portfolio-glow {
+  from { opacity: .25; transform: scale(.96); }
+  to { opacity: .65; transform: scale(1); }
+}
+@keyframes portfolio-reveal {
+  from { opacity: .7; translate: 0 18px; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-unified::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 80% 20%, color-mix(in srgb, var(--accent) 13%, transparent), transparent 65%);
+    animation: portfolio-glow 1.4s ease-out both;
+  }
+  .hero-unified .hero-title,
+  .hero-unified .hero-role-caption,
+  .hero-unified .hero-specialty,
+  .hero-unified .hero-description,
+  .hero-unified .hero-background,
+  .hero-unified .hero-role-location,
+  .hero-unified .hero-copy > .actions,
+  .hero-unified .hero-profile-card {
+    animation: portfolio-enter .65s cubic-bezier(.2, .7, .2, 1) backwards;
+  }
+  .hero-unified .hero-role-caption { animation-delay: .06s; }
+  .hero-unified .hero-specialty { animation-delay: .12s; }
+  .hero-unified .hero-description { animation-delay: .18s; }
+  .hero-unified .hero-background { animation-delay: .22s; }
+  .hero-unified .hero-role-location { animation-delay: .26s; }
+  .hero-unified .hero-copy > .actions { animation-delay: .3s; }
+  .hero-unified .hero-profile-card { animation-delay: .16s; }
+
+  @media (hover: hover) and (pointer: fine) {
+    .button, .profile-action, .project-card, .case-next-project {
+      transition: transform .24s ease, border-color .24s ease, box-shadow .24s ease, background-color .24s ease;
+    }
+    .button:hover, .profile-action:hover { transform: translateY(-3px); }
+    .project-card:hover, .case-next-project:hover {
+      transform: translateY(-4px);
+      border-color: color-mix(in srgb, var(--accent) 60%, var(--line));
+      box-shadow: 0 16px 38px #0002, 0 0 0 1px color-mix(in srgb, var(--accent) 8%, transparent);
+    }
+    .button.primary { position: relative; isolation: isolate; overflow: hidden; }
+    .button.primary::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(105deg, transparent 30%, #ffffff30 48%, transparent 66%);
+      transform: translateX(-130%);
+      transition: transform .6s ease;
+    }
+    .button.primary:hover::after { transform: translateX(130%); }
+  }
+
+  @supports (animation-timeline: view()) {
+    .hiring-site .skill-group, .hiring-site .experience, .hiring-site .project-card,
+    .case-premium .case-chapter, .case-premium .case-process {
+      animation: portfolio-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 65%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-unified::before { animation: none !important; transform: none !important; }
+  .hero-unified *, .project-card, .case-next-project, .case-chapter, .case-process,
+  .skill-group, .experience, .button, .profile-action {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    translate: none !important;
+    opacity: 1 !important;
+  }
+  .button.primary::after { display: none; }
+}

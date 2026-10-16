@@ -1,13 +1,15 @@
+import { Icon } from "../ui-icon";
+import { CopyEmailButton } from "../copy-email-button";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteHeader } from "../site-header";
 export const metadata: Metadata = {
-  title: "Contact Elliot Shohet | Fullstack Engineering Opportunities",
-  description: "Contact Elliot Shohet about senior fullstack engineering roles, including remote opportunities, projects, and collaborations.",
+  title: "Contact Elliot Shohet | Senior Full-Stack Engineer",
+  description: "Contact Elliot Shohet about senior full-stack and AI product engineering roles. Remote US and Los Angeles hybrid opportunities.",
   alternates: { canonical: "/contact" },
-  openGraph: { title: "Let’s build something useful | Elliot Shohet", description: "Senior fullstack engineering roles, remote opportunities, projects, and collaborations.", url: "/contact", type: "website" },
-  twitter: { card: "summary_large_image", title: "Contact Elliot Shohet", description: "Senior fullstack engineering roles, remote opportunities, projects, and collaborations." },
+  openGraph: { title: "Hire Elliot Shohet | Senior Full-Stack Engineer", description: "Full-stack engineering for AI products. Remote US and Los Angeles hybrid opportunities.", url: "/contact", type: "website" },
+  twitter: { card: "summary_large_image", title: "Contact Elliot Shohet", description: "Full-stack engineering for AI products. Remote US and Los Angeles hybrid opportunities.", images: [{ url: "/opengraph-image", alt: "Elliot Shohet — Senior Full-Stack Engineer. AI products, end to end." }] },
 };
 export default function Contact() {
-  return <div className="site"><SiteHeader /><main id="main" className="contact-page"><div className="contact-intro"><p className="eyebrow">Let’s talk</p><h1>A role, a project,<br />or a good idea<span>.</span></h1><p>I’m open to senior fullstack engineering roles, including remote opportunities. You can also get in touch about a project or collaboration.</p><a className="direct-email" href="mailto:elliot.shohet@gmail.com" data-track="email_click">Email Elliot ↗</a><p className="contact-detail">React · TypeScript · Node.js · React Native · AI integrations</p><Link href="/elliot-shohet-resume.pdf" className="text-link" data-track="resume_download">Download my résumé ↓</Link></div></main><footer><Link href="/">← Back to portfolio</Link><a href="https://www.linkedin.com/in/elliotshohet/">Find me on LinkedIn ↗</a></footer></div>;
+  return <div className="site"><SiteHeader /><main id="main" className="contact-page"><div className="contact-intro"><p className="eyebrow"><Icon name="mail" />Contact Elliot Shohet</p><h1>Building an AI product?<br />Let’s talk<span>.</span></h1><p>I’m interested in senior full-stack and AI product engineering roles: remote across the US or hybrid in Los Angeles. My work connects web and mobile experiences with APIs, LLM tools, and the infrastructure behind them.</p><div className="actions"><CopyEmailButton className="button primary"><Icon name="mail" />Email</CopyEmailButton><a className="button secondary" href="https://www.linkedin.com/in/elliotshohet/" target="_blank" rel="noopener noreferrer"><Icon name="linkedin" />LinkedIn <Icon name="external" /></a><a className="button secondary" href="https://github.com/elliotshohet" target="_blank" rel="noopener noreferrer"><Icon name="github" />GitHub<Icon name="external" /></a></div><p className="contact-detail">TypeScript · React · Next.js · Node.js · PostgreSQL · OpenAI / MCP</p><a href="/elliot-shohet-resume.pdf" className="text-link" data-track="resume_download" target="_blank" rel="noopener noreferrer" aria-label="View résumé PDF (opens in a new tab)"><Icon name="download" />View my résumé <Icon name="external" /></a></div></main><footer><Link href="/"><Icon name="left" />Back to portfolio</Link><a href="https://www.linkedin.com/in/elliotshohet/" target="_blank" rel="noopener noreferrer"><Icon name="linkedin" />Find me on LinkedIn <Icon name="external" /></a></footer></div>;
 }

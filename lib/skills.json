@@ -1,0 +1,9 @@
+[
+  { "title": "Languages & UI", "icon": "code", "skills": ["TypeScript", "JavaScript", "React", "Next.js", "React Native", "Expo", "Tailwind CSS", "shadcn/ui", "Python"] },
+  { "title": "Backend & APIs", "icon": "server", "skills": ["Node.js", "REST APIs", "GraphQL", "WebSockets", "OAuth"] },
+  { "title": "Data", "icon": "database", "skills": ["PostgreSQL", "Prisma", "Supabase", "Redis", "NoSQL"] },
+  { "title": "AI & integrations", "icon": "spark", "skills": ["OpenAI", "Large language models (LLMs)", "Model Context Protocol (MCP)"] },
+  { "title": "Cloud", "icon": "cloud", "skills": ["Vercel", "AWS Lambda", "Amazon EC2", "Amazon S3", "Amazon RDS", "Google Cloud Platform (GCP)", "Google Cloud Storage"] },
+  { "title": "DevOps", "icon": "workflow", "skills": ["Docker", "Docker Compose", "Linux", "CI/CD", "GitHub Actions"] },
+  { "title": "Testing", "icon": "flask", "skills": ["End-to-end testing", "Playwright", "Jest", "Mocha", "Chai"] }
+]

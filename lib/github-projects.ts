@@ -1,0 +1,47 @@
+import type { Project } from "./projects";
+
+export const githubProjects: Project[] = [
+  {
+    slug: "pets-saas",
+    name: "Pets",
+    repository: "https://github.com/elliotshohet/pets-saas",
+    title: "A full-stack pet-care organizer",
+    subtitle: "Profiles, medical history, care logs, and an administrator workspace.",
+    description: "A local pet-care demo built with Next.js, React, TypeScript, Prisma, PostgreSQL, and Docker Compose.",
+    role: "Personal project",
+    period: "Oct 2026 · Local demo",
+    tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Docker Compose"],
+    summary: "Pets brings pet profiles, medical records, photos, medication plans, and everyday observations into one workspace. A separate administrator interface supports member management and care analytics.",
+    contribution: "Full-stack care workflows with typed database access, validated uploads, owner-scoped records, and administrative tools.",
+    sections: [
+      { heading: "Owner care workflows", text: "Owners can create and edit pet profiles, search their pets, and filter categorized medical history. Medication plans, weight measurements, and observations sit alongside care essentials such as allergies and emergency contacts. Selected records can be printed as a care summary." },
+      { heading: "Data and application architecture", text: "Next.js Server Components load data, Server Actions handle mutations, and Route Handlers serve files and sessions. Prisma models the PostgreSQL relationships among accounts, pets, medical records, files, medication plans, and care logs. Zod validates input, while Sharp normalizes uploaded profile photos." },
+      { heading: "Administration and local development", text: "The administrator workspace includes account and care-record management plus analytics derived from stored records. Docker Compose runs the app and PostgreSQL with persistent database storage. The repository includes unit and database integration checks and fictional seed data." },
+      { heading: "Demo scope", text: "Email-only sign-in selects an account without verifying ownership, so this is a trusted local demo rather than production authentication. Uploaded images are stored in PostgreSQL alongside the structured care records." },
+    ],
+    outcome: "A runnable local demonstration of pet-care CRUD, relational data modeling, account-scoped file routes, and administrator workflows.",
+    flowHeading: "The application flow",
+    flow: ["Owner workspace", "Validated server actions", "Prisma / PostgreSQL", "Care history & summaries"],
+  },
+  {
+    slug: "ethmailer",
+    name: "Ethmailer",
+    repository: "https://github.com/elliotshohet/ethmailer",
+    title: "An Ethereum-address messaging prototype",
+    subtitle: "A public-key registry and contract events connected to IPFS-backed messages.",
+    description: "A proof of concept combining JavaScript, Solidity, Web3, and IPFS for messages addressed to Ethereum accounts.",
+    role: "Personal project",
+    period: "Nov 2017 · Proof of concept",
+    tags: ["JavaScript", "Solidity", "Web3", "IPFS", "Truffle"],
+    summary: "Ethmailer explores messages addressed to Ethereum accounts. A Solidity registry associates addresses with public keys, while the browser encrypts message payloads, stores them through IPFS, and sends content references through contract events.",
+    contribution: "The repository connects a Solidity key registry and indexed message events with browser encryption and IPFS-backed payloads.",
+    sections: [
+      { heading: "Address-based delivery", text: "The contract stores a public key for each registered Ethereum address. Sending a message looks up the recipient’s key and emits an event containing the sender, recipient, and IPFS content reference." },
+      { heading: "Browser and storage integration", text: "The JavaScript client uses Web3 and Truffle contract abstractions to register keys and watch message events. It encrypts outgoing payloads, writes them to IPFS, retrieves incoming content references, and decrypts messages in the browser." },
+      { heading: "Prototype boundaries", text: "The README identifies this as a proof of concept. It is a historical experiment in connecting Ethereum contract events, browser cryptography, and off-chain storage." },
+    ],
+    outcome: "A code-level demonstration of Ethereum identity, off-chain message storage, and event-based delivery.",
+    flowHeading: "The message flow",
+    flow: ["Recipient public key", "Browser encryption", "IPFS payload", "Contract event & inbox"],
+  },
+];

@@ -1,23 +1,34 @@
 import type { SVGProps } from "react";
-const paths = {
-  briefcase: "M8 6V4h8v2M3 6h18v14H3zM3 11c5 4 13 4 18 0M10 12h4",
-  user: "M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0M4 21v-3a8 8 0 0 1 16 0v3",
-  mail: "M3 5h18v14H3zM3 5l9 7 9-7",
-  download: "M12 3v12M7 10l5 5 5-5M4 16v5h16v-5",
-  arrow: "M4 12h16M14 6l6 6-6 6",
-  down: "M12 4v16M6 14l6 6 6-6",
-  external: "M8 5H4v15h15v-4M12 4h8v8M20 4L10 14",
-  globe: "M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0M3 12h18M12 3c5 5 5 13 0 18-5-5-5-13 0-18",
-  phone: "M7 2h10v20H7zM10 18h4",
-  code: "M8 6l-6 6 6 6M16 6l6 6-6 6M14 3l-4 18",
-  spark: "M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z",
-  music: "M9 18V5l12-3v13M9 5l12-3M9 18a3 3 0 1 1-3-3h3M21 15a3 3 0 1 1-3-3h3",
-  pin: "M19 9c0 5-7 12-7 12S5 14 5 9a7 7 0 1 1 14 0M14 9a2 2 0 1 1-4 0 2 2 0 0 1 4 0",
-  sun: "M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5",
-  moon: "M20 15A9 9 0 0 1 9 4a9 9 0 1 0 11 11",
-  layers: "M12 3l10 5-10 5L2 8zM2 12l10 5 10-5M2 16l10 5 10-5",
-  up: "M12 20V4M6 10l6-6 6 6",
+import {
+  ArrowDown, ArrowLeft, ArrowRight, ArrowUp, ArrowUpRight, BriefcaseBusiness,
+  CalendarDays, Check, Cloud, CodeXml, Copy, Database, Download, ExternalLink,
+  FlaskConical, Globe, GraduationCap, Layers, Mail, MapPin,
+  Moon, Music, Server, Smartphone, Sparkles, Sun, User, Workflow,
+} from "lucide-react";
+
+// LinkedIn brand mark from Simple Icons (CC0).
+function LinkedInLogo(props: SVGProps<SVGSVGElement>) {
+  return <svg viewBox="0 0 24 24" {...props} fill="currentColor" stroke="none"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>;
+}
+
+// GitHub brand mark from Simple Icons (CC0).
+function GitHubLogo(props: SVGProps<SVGSVGElement>) {
+  return <svg viewBox="0 0 24 24" {...props} fill="currentColor" stroke="none"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" /></svg>;
+}
+
+const icons = {
+  briefcase: BriefcaseBusiness, user: User, mail: Mail, download: Download,
+  arrow: ArrowRight, down: ArrowDown, external: ExternalLink, globe: Globe,
+  phone: Smartphone, code: CodeXml, spark: Sparkles, music: Music, pin: MapPin,
+  sun: Sun, moon: Moon, layers: Layers, up: ArrowUp, left: ArrowLeft,
+  diagonal: ArrowUpRight, database: Database, cloud: Cloud, server: Server,
+  flask: FlaskConical, github: GitHubLogo, calendar: CalendarDays,
+  education: GraduationCap, check: Check, copy: Copy, linkedin: LinkedInLogo,
+  workflow: Workflow,
 };
-export function Icon({ name, className = "", ...props }: SVGProps<SVGSVGElement> & { name: keyof typeof paths }) {
-  return <svg className={`ui-icon ${className}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false" {...props}><path d={paths[name]} /></svg>;
+export type IconName = keyof typeof icons;
+
+export function Icon({ name, className = "", ...props }: SVGProps<SVGSVGElement> & { name: IconName }) {
+  const LucideIcon = icons[name];
+  return <LucideIcon className={`ui-icon ${className}`} strokeWidth={1.6} aria-hidden="true" focusable="false" {...props} />;
 }
