@@ -62,7 +62,7 @@ SKILL_GROUPS = [(group["title"], group["skills"])
 
 EXPERIENCE = json.loads((ROOT / "lib" / "experience.json").read_text())
 
-PROFILE = 'Senior full-stack engineer building AI products across mobile, web, and backend services. Combines hands-on TypeScript, React, Next.js, and PostgreSQL development with experience in LLM tool calling, payment infrastructure, and leading small engineering teams.'
+PROFILE = 'Full-stack engineer building AI products across mobile, web, and backend services. Combines hands-on TypeScript, React, Next.js, and PostgreSQL development with experience in LLM tool calling, payment infrastructure, and leading small engineering teams.'
 
 
 def paragraph(text, style="body"):
@@ -130,7 +130,7 @@ def role(company, title, date, bullets, first=False):
 def build_resume():
     flow = [
         paragraph("ELLIOT SHOHET", "name"),
-        paragraph("Senior Full-Stack Engineer | AI Product Engineering", "title"),
+        paragraph("Full-Stack Engineer | AI Product Engineering", "title"),
         paragraph('Remote US / Los Angeles hybrid  |  <link href="tel:+18184452786">818-445-2786</link>  |  <link href="mailto:elliot.shohet@gmail.com">elliot.shohet@gmail.com</link>', "contact"),
         paragraph('<link href="https://elliotshohet.com">elliotshohet.com</link>  |  <link href="https://github.com/elliotshohet">github.com/elliotshohet</link>  |  <link href="https://linkedin.com/in/elliotshohet">linkedin.com/in/elliotshohet</link>', "contact"),
         *section("PROFILE"), paragraph(escape(PROFILE)),
@@ -153,7 +153,7 @@ def build_resume():
     SimpleDocTemplate(
         buffer, pagesize=letter, leftMargin=MARGIN, rightMargin=MARGIN,
         topMargin=28, bottomMargin=28,
-        title="Elliot Shohet - Senior Full-Stack Engineer", author="Elliot Shohet",
+        title="Elliot Shohet - Full-Stack Engineer", author="Elliot Shohet",
     ).build(flow, onLaterPages=reject_extra_page)
     OUTPUT.write_bytes(buffer.getvalue())
 

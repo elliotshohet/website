@@ -22,7 +22,7 @@ No environment variables are needed to run the site. Local Vercel metadata and e
 
 ## Website and résumé content
 
-The site targets senior full-stack roles with an emphasis on AI product engineering.
+The site targets full-stack roles with an emphasis on AI product engineering.
 
 - `lib/skills.json` is the complete shared source for website and résumé skills.
 - `lib/experience.json` contains résumé bullets and the role titles and dates shared with the website's employment case studies.
