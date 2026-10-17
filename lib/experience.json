@@ -2,7 +2,7 @@
   {
     "slug": "burn",
     "name": "Burn",
-    "role": "Senior Full-Stack Engineer",
+    "role": "Full-stack Engineer",
     "period": "Oct 2022 - Present",
     "bullets": [
       "Own full-stack engineering for a mobile and web health product using React Native/Expo, Next.js, and PostgreSQL/Prisma in a shared TypeScript codebase.",
@@ -15,7 +15,7 @@
   {
     "slug": "niftys",
     "name": "Nifty's",
-    "role": "Full-Stack Engineer",
+    "role": "Full-stack Engineer",
     "period": "May 2021 - Oct 2022",
     "bullets": [
       "Engineered Solidity smart contracts supporting 100,000+ NFT mints across Ethereum and Palm.",
@@ -25,7 +25,7 @@
   {
     "slug": "hypernet",
     "name": "Hypernet Labs",
-    "role": "Full-Stack Engineer",
+    "role": "Full-stack Engineer",
     "period": "Feb 2019 - Feb 2020",
     "bullets": [
       "Architected layer-two ERC20 payment settlement infrastructure reaching 25 transactions per second.",
@@ -36,7 +36,7 @@
   {
     "slug": "i2chain",
     "name": "i2Chain, Inc.",
-    "role": "Full-Stack Engineer",
+    "role": "Full-stack Engineer",
     "period": "Sep 2018 - Feb 2019",
     "bullets": [
       "Built Electron/React/Redux desktop software and Node.js identity-based access controls; developed AWS Lambda services and operated a production geth node cluster."

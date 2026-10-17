@@ -20,8 +20,8 @@
 }
 
 * { box-sizing: border-box; }
-:root { color-scheme: dark; --bg: #080b09; --surface: #111a14; --text: #effaf2; --muted: #a6baac; --accent: #4ade80; --line: #293d30; --button-text: #06190d; }
-[data-theme="light"] { color-scheme: light; --bg: #f4faf5; --surface: #e6f2e9; --text: #0c1b11; --muted: #45634f; --accent: #16783c; --line: #c5dacb; --button-text: #ffffff; }
+:root { color-scheme: dark; --bg: #171a18; --surface: #202521; --text: #f0efe8; --muted: #adb5ac; --accent: #b4c9a5; --line: #363e36; --button-text: #1a2519; }
+[data-theme="light"] { color-scheme: light; --bg: #f4f2eb; --surface: #eae9e0; --text: #252c25; --muted: #5b665a; --accent: #526a43; --line: #d2d6c9; --button-text: #ffffff; }
 html { background: var(--bg); color: var(--text); scroll-behavior: smooth; scroll-padding-top: 30px; }
 body { margin: 0; font-family: var(--font-geist), Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
 a { color: inherit; text-decoration: none; }
@@ -900,4 +900,77 @@ html { scroll-padding-top: 112px; }
   .hiring-site .hero-unified .hero-specialty { font-size: clamp(27px, 7.5vw, 38px); }
   .hero-primary-actions .button { padding-inline: 14px; }
   .hero-unified .hero-profile-card { max-width: 280px; }
+}
+
+/* Editorial finish: open composition, restrained surfaces, and a clear hierarchy. */
+.site-header { justify-content: space-between; flex-direction: row; flex-wrap: nowrap; min-height: 92px; gap: 28px; padding-block: 12px; }
+.site-signature { display: inline-flex; align-items: center; min-height: 44px; font-family: Georgia, serif; font-size: 42px; line-height: 1; letter-spacing: -.09em; }
+.site-signature span { color: var(--accent); }
+.site-header nav { display: flex; width: auto; flex-wrap: nowrap; justify-content: flex-end; gap: clamp(16px, 2.4vw, 32px); padding: 0; font-size: 13px; }
+.site-header nav > :nth-child(n) { flex: initial; }
+.site-header nav > a { white-space: nowrap; }
+.theme-toggle { border-radius: 4px; }
+.hiring-site .hero.hero-unified { grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); align-items: center; gap: clamp(40px, 7vw, 100px); margin: 0; padding: 84px 0 88px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: none; overflow: visible; }
+.intro-label { display: flex; align-items: center; gap: 12px; margin: 0 0 28px; color: var(--muted); font-size: 12px; letter-spacing: .025em; }
+.hiring-site .hero-unified h1.hero-title { font-size: clamp(54px, 6.9vw, 94px); font-weight: 500; letter-spacing: -.075em; line-height: 1.04; margin: 0; color: var(--text); text-wrap: balance; }
+.hiring-site .hero-unified .hero-specialty { margin-top: 20px; font-size: clamp(30px, 3.6vw, 48px); line-height: 1.13; letter-spacing: -.045em; }
+.hiring-site .hero-specialty em { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; font-style: italic; }
+.hiring-site .hero-description { max-width: 43ch; font-size: 18px; line-height: 1.8; margin-top: 30px; text-wrap: pretty; }
+.hiring-site .hero-background { margin-top: 14px; font-size: 14px; }
+.hero-unified .hero-profile-card { max-width: 360px; justify-self: end; }
+.hero-profile-photo { aspect-ratio: 4 / 4.3; border-radius: 3px; border: 0; filter: saturate(.72); object-position: center; }
+.hero-profile-actions { gap: 0; margin-top: 14px; border-bottom: 1px solid var(--line); }
+.hero-profile-actions .profile-action { flex-direction: row; gap: 7px; min-height: 48px; padding: 8px 0; border: 0; border-radius: 0; font-size: 12px; }
+.hero-profile-actions .profile-action + .profile-action { border-left: 1px solid var(--line); }
+.hero-profile-actions .ui-icon { width: 16px; height: 16px; }
+.hero-unified .hero-education { margin-top: 22px; padding-top: 0; border: 0; }
+.hero-education .education-logo img { width: 120px; }
+.education-badges { gap: 4px 10px; margin-top: 10px; }
+.hiring-site .hero-role-location [data-slot="badge"], .education-badges [data-slot="badge"] { border: 0; background: transparent; padding: 3px 0; color: var(--muted); border-radius: 0; }
+.hiring-site .hero-role-location { gap: 20px; margin-top: 22px; }
+.hiring-site .section { padding-block: 96px; }
+.section-heading h2 { text-wrap: balance; }
+.hiring-site .section-heading > p:last-child { max-width: 48ch; font-size: 15px; }
+.hiring-site .experience-burn { padding: 36px; border: 0; border-radius: 4px; }
+.company-milestone [data-slot="badge"] { color: var(--accent); background: color-mix(in srgb, var(--accent) 9%, transparent); border-radius: 3px; }
+.burn-evidence [data-slot="badge"] { padding: 0; color: var(--text); background: none; border-radius: 0; font-size: 13px; font-weight: 500; }
+.burn-evidence [data-slot="badge"] .ui-icon { color: var(--accent); }
+.hiring-site .project-card { padding: 36px; border-radius: 4px; border: 0; }
+.hiring-site .skill-group .tags li { background: none; }
+.hiring-site .skill-group .skill-badges [data-slot="badge"] { border-radius: 3px; }
+.button { border-radius: 4px; }
+a, button { transition: color .2s ease, background-color .2s ease, border-color .2s ease; }
+.button:active, .profile-action:active { transform: translateY(1px); }
+footer { gap: 24px; }
+@media (max-width: 900px) {
+  .site-header nav { gap: 16px; font-size: 12px; }
+  .hiring-site .hero.hero-unified { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 36px; padding-block: 64px; }
+  .hiring-site .hero-unified h1.hero-title { font-size: clamp(46px, 7vw, 66px); }
+  .hiring-site .hero-description { font-size: 16px; }
+  .hero-profile-actions .profile-action { flex-direction: column; font-size: 11px; gap: 5px; padding-block: 10px; }
+}
+@media (max-width: 650px) {
+  html { scroll-padding-top: 140px; }
+  .site-header { display: grid; grid-template-columns: 1fr; min-height: auto; gap: 8px; padding-block: 12px 8px; }
+  .site-signature { justify-self: start; font-size: 34px; }
+  .site-header nav { width: 100%; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 10px; font-size: 11px; }
+  .site-header nav > :nth-child(n) { flex: initial; font-size: 11px; padding-inline: 0; }
+  .site-header nav > button:last-child { padding-inline: 9px; }
+  .hiring-site .hero.hero-unified { grid-template-columns: minmax(0, 1fr); gap: 42px; padding: 48px 0 56px; margin: 0; }
+  .intro-label { margin-bottom: 22px; font-size: 11px; gap: 10px; }
+  .hiring-site .hero-unified h1.hero-title { font-size: clamp(44px, 11.4vw, 72px); }
+  .hiring-site .hero-unified .hero-specialty { font-size: clamp(29px, 7.5vw, 40px); }
+  .hiring-site .hero-description { margin-top: 24px; }
+  .hero-unified .hero-profile-card { width: min(100%, 340px); max-width: 340px; justify-self: center; }
+  .hero-profile-photo { aspect-ratio: 1.12; }
+  .hero-profile-actions .profile-action { flex-direction: row; }
+  .hiring-site .hero-primary-actions .button { flex: 1 1 auto; padding-inline: 15px; }
+  .hiring-site .section { padding-block: 60px; }
+  .hiring-site .experience-burn, .hiring-site .project-card { padding: 24px; }
+  .hiring-site .hero-role-location { gap: 14px; }
+  footer { align-items: flex-start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  a, button { transition: none; }
 }

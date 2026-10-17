@@ -13,7 +13,7 @@ export const dynamicParams = false;
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = getProject((await params).slug); if (!project) notFound();
   const title = `${project.name} — ${project.repository ? "GitHub Project" : "Engineering Case Study"} | Elliot Shohet`;
-  return { title, description: project.description, alternates: { canonical: `/work/${project.slug}` }, openGraph: { title, description: project.description, url: `/work/${project.slug}`, type: "article", siteName: "Elliot Shohet", locale: "en_US" }, twitter: { card: "summary_large_image", title, description: project.description, images: [{ url: "/opengraph-image", alt: "Elliot Shohet — Full-Stack Engineer" }] } };
+  return { title, description: project.description, alternates: { canonical: `/work/${project.slug}` }, openGraph: { title, description: project.description, url: `/work/${project.slug}`, type: "article", siteName: "Elliot Shohet", locale: "en_US" }, twitter: { card: "summary_large_image", title, description: project.description, images: [{ url: "/opengraph-image", alt: "Elliot Shohet — Full-stack Engineer" }] } };
 }
 export default async function Project({ params }: Props) {
   const project = getProject((await params).slug); if (!project) notFound();

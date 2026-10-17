@@ -1,6 +1,13 @@
-import { Icon } from "./ui-icon";
 import Link from "next/link";
 import { ThemeToggle } from "./theme";
 export function SiteHeader() {
-  return <header className="site-header"><nav aria-label="Main navigation"><Link href="/#about"><Icon name="user" />About</Link><Link href="/#work"><Icon name="briefcase" />Work</Link><Link href="/#projects"><Icon name="github" />Projects</Link><Link href="/#skills"><Icon name="layers" />Skills</Link><a href="/elliot-shohet-resume.pdf" data-track="resume_download" target="_blank" rel="noopener noreferrer" aria-label="Résumé PDF (opens in a new tab)"><Icon name="download" />Résumé</a><Link className="nav-contact" href="/contact"><Icon name="mail" />Contact</Link><a className="nav-social" href="https://www.linkedin.com/in/elliotshohet/" target="_blank" rel="noopener noreferrer" aria-label="Elliot Shohet on LinkedIn" title="LinkedIn"><Icon name="linkedin" /><span className="sr-only">LinkedIn</span></a><a className="nav-social" href="https://github.com/elliotshohet" target="_blank" rel="noopener noreferrer" aria-label="Elliot Shohet on GitHub" title="GitHub"><Icon name="github" /><span className="sr-only">GitHub</span></a><ThemeToggle /></nav></header>;
+  return <header className="site-header">
+    <Link className="site-signature" href="/#about" aria-label="Elliot Shohet home">es<span>.</span></Link>
+    <nav aria-label="Main navigation">
+      <Link href="/#work">Work</Link><Link href="/#projects">Projects</Link><Link href="/#skills">Skills</Link>
+      <a href="/elliot-shohet-resume.pdf" data-track="resume_download" target="_blank" rel="noopener noreferrer" aria-label="Résumé PDF (opens in a new tab)">Résumé ↗</a>
+      <Link className="nav-contact" href="/contact">Let’s talk <span aria-hidden="true">↗</span></Link>
+      <ThemeToggle />
+    </nav>
+  </header>;
 }

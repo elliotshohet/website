@@ -3,26 +3,12 @@
   from { opacity: .35; transform: translateY(14px); }
   to { opacity: 1; transform: translateY(0); }
 }
-@keyframes portfolio-glow {
-  from { opacity: .25; transform: scale(.96); }
-  to { opacity: .65; transform: scale(1); }
-}
 @keyframes portfolio-reveal {
   from { opacity: .7; translate: 0 18px; }
   to { opacity: 1; translate: 0 0; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .hero-unified::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    border-radius: inherit;
-    pointer-events: none;
-    background: radial-gradient(ellipse at 80% 20%, color-mix(in srgb, var(--accent) 13%, transparent), transparent 65%);
-    animation: portfolio-glow 1.4s ease-out both;
-  }
   .hero-unified .hero-title,
   .hero-unified .hero-role-caption,
   .hero-unified .hero-specialty,
@@ -45,23 +31,13 @@
     .button, .profile-action, .project-card, .case-next-project {
       transition: transform .24s ease, border-color .24s ease, box-shadow .24s ease, background-color .24s ease;
     }
-    .button:hover, .profile-action:hover { transform: translateY(-3px); }
+    .button:hover, .profile-action:hover { transform: translateY(-2px); }
     .project-card:hover, .case-next-project:hover {
-      transform: translateY(-4px);
+      transform: translateY(-2px);
       border-color: color-mix(in srgb, var(--accent) 60%, var(--line));
       box-shadow: 0 16px 38px #0002, 0 0 0 1px color-mix(in srgb, var(--accent) 8%, transparent);
     }
-    .button.primary { position: relative; isolation: isolate; overflow: hidden; }
-    .button.primary::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: linear-gradient(105deg, transparent 30%, #ffffff30 48%, transparent 66%);
-      transform: translateX(-130%);
-      transition: transform .6s ease;
-    }
-    .button.primary:hover::after { transform: translateX(130%); }
+
   }
 
   @supports (animation-timeline: view()) {
@@ -75,7 +51,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-unified::before { animation: none !important; transform: none !important; }
   .hero-unified *, .project-card, .case-next-project, .case-chapter, .case-process,
   .skill-group, .experience, .button, .profile-action {
     animation: none !important;
@@ -84,5 +59,4 @@
     translate: none !important;
     opacity: 1 !important;
   }
-  .button.primary::after { display: none; }
 }

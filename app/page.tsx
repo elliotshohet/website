@@ -19,10 +19,10 @@ const burnEvidence = [
 ];
 const profile = {
   "@context": "https://schema.org", "@type": "ProfilePage", "@id": "https://elliotshohet.com/#profile",
-  url: "https://elliotshohet.com", name: "Elliot Shohet — Full-Stack Engineer",
+  url: "https://elliotshohet.com", name: "Elliot Shohet — Full-stack Engineer",
   mainEntity: {
     "@type": "Person", "@id": "https://elliotshohet.com/#person", name: "Elliot Shohet",
-    url: "https://elliotshohet.com", jobTitle: "Full-Stack Engineer",
+    url: "https://elliotshohet.com", jobTitle: "Full-stack Engineer",
     description: "Full-stack engineer building health tracking and AI coaching at Burn, with experience in mobile, web, APIs, payment infrastructure, and small-team leadership. Open to remote US and Los Angeles hybrid roles.",
     sameAs: [linkedin, github], email: "elliot.shohet@gmail.com",
     homeLocation: { "@type": "Place", name: "Los Angeles Metropolitan Area" },
@@ -37,13 +37,13 @@ export default function Home() {
     <main id="main" tabIndex={-1}>
       <section id="about" className="hero hero-redesign hero-unified" aria-labelledby="intro-heading">
         <div className="hero-copy">
-          <h1 id="intro-heading" className="hero-title">Elliot Shohet<span>.</span></h1><p className="hero-kicker hero-role-caption"><Badge variant="outline"><Icon name="code" />Full-Stack Engineer</Badge></p><p className="hero-specialty"><em>AI products. End to end.</em></p>
+          <p className="intro-label"><span className="status-dot" />Full-stack engineer · Los Angeles</p><h1 id="intro-heading" className="hero-title">Elliot Shohet<span>.</span></h1><p className="hero-specialty"><em>AI products. End to end.</em></p>
           <p className="hero-description">I build health tracking and AI coaching at Burn, owning the mobile app, web experience, APIs, and services behind them.</p>
           <p className="hero-background">TypeScript across the stack. Small-team leadership.</p><div className="hero-role-location metadata-badges"><Badge variant="outline"><Icon name="globe" />Remote US</Badge><Badge variant="outline"><Icon name="briefcase" />Los Angeles hybrid</Badge></div>
           <div className="actions hero-primary-actions"><a className="button primary" href="#work">Explore my work<Icon name="down" /></a><a className="button secondary" href="/elliot-shohet-resume.pdf" data-track="resume_download" target="_blank" rel="noopener noreferrer" aria-label="View résumé PDF (opens in a new tab)"><Icon name="download" />View résumé</a></div>
         </div>
         <aside className="hero-profile-card" aria-label="About Elliot Shohet">
-          <Image className="hero-profile-photo" src="/elliot-shohet-headshot.png" alt="Elliot Shohet" width={640} height={640} sizes="(max-width: 440px) calc(100vw - 100px), 320px" preload />
+          <Image className="hero-profile-photo" src="/elliot-shohet-headshot.png" alt="Elliot Shohet" width={640} height={640} sizes="(max-width: 650px) 280px, 360px" preload />
           <div className="hero-profile-actions" aria-label="Connect with Elliot"><a className="profile-action" href={github} target="_blank" rel="noopener noreferrer"><Icon name="github" /><span>GitHub</span></a><a className="profile-action" href={linkedin} target="_blank" rel="noopener noreferrer"><Icon name="linkedin" /><span>LinkedIn</span></a><Link className="profile-action" href="/contact"><Icon name="mail" /><span>Contact</span></Link></div>
 
           <div className="hero-education"><a className="education-logo" href="https://www.ucdavis.edu/" aria-label="University of California, Davis" target="_blank" rel="noopener noreferrer"><Image src="/companies/uc-davis.svg" alt="University of California, Davis" width={200} height={60} unoptimized /></a><div className="metadata-badges education-badges"><Badge variant="outline"><Icon name="code" />B.S. Computer Science</Badge><Badge variant="outline"><Icon name="calendar" />2012–2017</Badge></div></div>
@@ -89,6 +89,6 @@ export default function Home() {
         <a className="contact-email" href="mailto:elliot.shohet@gmail.com" data-track="email_click">elliot.shohet@gmail.com</a>
       </section>
     </main>
-    <footer><p>Elliot Shohet · Full-Stack Engineer</p><div><a href={linkedin} rel="me noopener noreferrer" target="_blank"><Icon name="linkedin" />LinkedIn</a><a href={github} rel="me noopener noreferrer" target="_blank"><Icon name="github" />GitHub</a><a href="#main">Back to top <Icon name="up" /></a></div></footer>
+    <footer><p>Elliot Shohet · Full-stack Engineer</p><div><a href={linkedin} rel="me noopener noreferrer" target="_blank"><Icon name="linkedin" />LinkedIn</a><a href={github} rel="me noopener noreferrer" target="_blank"><Icon name="github" />GitHub</a><a href="#main">Back to top <Icon name="up" /></a></div></footer>
   </div>;
 }
