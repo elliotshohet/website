@@ -24,8 +24,19 @@ No environment variables are needed to run the site. Local Vercel metadata and e
 
 The site targets senior full-stack roles with an emphasis on AI product engineering.
 
-- `lib/skills.json` is the shared source for website and résumé skills. The résumé omits Google Cloud Storage to keep its Cloud row on one line.
+- `lib/skills.json` is the complete shared source for website and résumé skills.
+- `lib/experience.json` contains résumé bullets and the role titles and dates shared with the website's employment case studies.
 - `lib/projects.ts` contains employment case studies; the GitHub project files contain dated repository demonstrations and historical prototypes.
 - `scripts/build_resume.py` generates the searchable, one-page PDF served at `/elliot-shohet-resume.pdf`. Run it with Python and ReportLab installed, then render and inspect the result after content changes.
+
+To regenerate the résumé:
+
+```sh
+python3 -m venv .venv
+.venv/bin/python -m pip install -r scripts/requirements-resume.txt
+.venv/bin/python scripts/build_resume.py
+```
+
+The generator rejects content that exceeds one page before replacing the existing PDF. Render and inspect the generated file to confirm readability and text fit.
 
 The public site does not show compensation targets or recruiting notes. Local edits require a separate deployment to reach elliotshohet.com.

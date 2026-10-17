@@ -9,7 +9,7 @@ import "./globals.css";
 import "./motion.css";
 const geist = Geist({ subsets: ["latin"], display: "swap", variable: "--font-geist" });
 const title = "Elliot Shohet | Senior Full-Stack Engineer · AI Products";
-const description = "Senior full-stack engineer building AI products with TypeScript, React, Next.js, Node.js, and PostgreSQL. Web, mobile, LLM integrations, and delivery automation.";
+const description = "Senior full-stack engineer building mobile, web, and AI coaching at Burn. TypeScript, React, Next.js, PostgreSQL, and LLM tools. Remote US or Los Angeles hybrid.";
 export const metadata: Metadata = {
   verification: process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : undefined,
   metadataBase: new URL("https://elliotshohet.com"), title, description,

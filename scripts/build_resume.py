@@ -1,6 +1,7 @@
-"""Build the site's searchable, one-page resume PDF."""
+"""Build the site's searchable, one-page resume PDF from shared content."""
 
 import json
+from io import BytesIO
 from pathlib import Path
 from xml.sax.saxutils import escape
 
@@ -47,65 +48,21 @@ STYLES = {
     "title": ParagraphStyle("Title", fontName="ResumeSans", fontSize=11.5, leading=16, spaceAfter=5, textColor=INK),
     "contact": ParagraphStyle("Contact", fontName="ResumeSans", fontSize=8.3, leading=11.5, textColor=MUTED),
     "section": ParagraphStyle("Section", fontName="ResumeSans-Bold", fontSize=9.2, leading=12, textColor=GREEN),
-    "body": ParagraphStyle("Body", fontName="ResumeSans", fontSize=9.5, leading=12.5, textColor=INK),
+    "body": ParagraphStyle("Body", fontName="ResumeSans", fontSize=10, leading=13.5, textColor=INK),
     "skill_label": ParagraphStyle("SkillLabel", fontName="ResumeSans-Bold", fontSize=8.7, leading=11.5, textColor=GREEN),
     "skill_value": ParagraphStyle("SkillValue", fontName="ResumeSans", fontSize=9.2, leading=12, textColor=INK),
     "role": ParagraphStyle("Role", fontName="ResumeSans", fontSize=9.7, leading=13, textColor=INK),
     "date": ParagraphStyle("Date", fontName="ResumeSans", fontSize=9, leading=13, alignment=TA_RIGHT, textColor=MUTED),
-    "bullet": ParagraphStyle("Bullet", fontName="ResumeSans", fontSize=9.4, leading=12.2, leftIndent=9, firstLineIndent=0, bulletIndent=0, bulletFontName="ResumeSans", bulletFontSize=7.5, spaceAfter=2.5, textColor=INK),
+    "bullet": ParagraphStyle("Bullet", fontName="ResumeSans", fontSize=10, leading=13.2, leftIndent=10, firstLineIndent=0, bulletIndent=0, bulletFontName="ResumeSans", bulletFontSize=7.5, spaceAfter=3, textColor=INK),
 }
 
-# Shared taxonomy; omit Cloud Storage from the résumé to keep Cloud on one line.
-SKILL_GROUPS = [(group["title"], [skill for skill in group["skills"]
-                                 if skill != "Google Cloud Storage"])
+# Keep the complete skills taxonomy aligned with the website.
+SKILL_GROUPS = [(group["title"], group["skills"])
                 for group in json.loads((ROOT / "lib" / "skills.json").read_text())]
 
-EXPERIENCE = [['Burn',
-  'Senior Full-stack Engineer',
-  'Oct 2022 - Present',
-  ['Own React Native/Expo mobile, Next.js web, and PostgreSQL/Prisma backend engineering in a '
-   'TypeScript monorepo; implemented native Google sign-in bridges in Swift and Kotlin.',
-   'Built streaming OpenAI-powered LLM chat with persistent history and health-data tool calling; used '
-   'transactional leases, recorded tool outcomes, and rate limits to guard concurrent replies and '
-   'repeated writes after retries.',
-   'Exposed health tools to ChatGPT through an OAuth-protected MCP server with scoped consent and '
-   'encrypted tokens; fetched Google Health metrics concurrently with timeouts and partial '
-   'results.',
-   'Implemented direct Apple App Store and Google Play subscription verification with account '
-   'binding, product and status checks, and store-environment validation.',
-   'Standardized development with Docker Compose for PostgreSQL, migrations, Next.js, Expo/Metro, '
-   'and Android builds; added release preflight checks and regression coverage.',
-   'Optimized meal photos with Sharp resizing and compression; enforced upload and decoded-pixel '
-   'limits.']],
- ["Nifty's (acquired by MoonPay)",
-  'Full-stack Engineer',
-  'May 2021 - Oct 2022',
-  ['Engineered Solidity smart contracts supporting 100,000+ NFT mints across Ethereum and Palm.',
-   'Automated contract deployment and verification across staging and production for repeatable '
-   'releases.']],
- ['Hypernet Labs',
-  'Full-stack Engineer',
-  'Feb 2019 - Feb 2020',
-  ['Architected layer-two ERC20 payment settlement infrastructure scaling to 25 '
-   'transactions/second.',
-   'Built a modular SDK with dependency injection and CI/CD automation; managed a small '
-   'engineering team and technical roadmaps.']],
- ['i2Chain, Inc',
-  'Full-stack Engineer',
-  'Sep 2018 - Feb 2019',
-  ['Delivered Electron/React/Redux desktop software and Node.js identity-based access controls, '
-   'operated a production geth node cluster, and developed AWS Lambda services.']],
- ['Ooma, Inc.',
-  'Software Engineering Intern',
-  'Jun 2017 - Sep 2017',
-  ['Containerized applications with Docker Swarm and profiled performance across a million-line '
-   'Java codebase.']],
- ['Weebly',
-  'Software Engineering Intern',
-  'Jun 2015 - Sep 2015',
-  ['Generated API clients in 13 languages and delivered REST endpoints with automated checks.']]]
+EXPERIENCE = json.loads((ROOT / "lib" / "experience.json").read_text())
 
-PROFILE = 'Senior full-stack engineer building AI-powered web and mobile products with TypeScript, React, Next.js, Node.js, and PostgreSQL. Owns product delivery across interfaces, backend services, LLM integrations, identity, data, and DevOps.'
+PROFILE = 'Senior full-stack engineer building AI products across mobile, web, and backend services. Combines hands-on TypeScript, React, Next.js, and PostgreSQL development with experience in LLM tool calling, payment infrastructure, and leading small engineering teams.'
 
 
 def paragraph(text, style="body"):
@@ -173,24 +130,32 @@ def role(company, title, date, bullets, first=False):
 def build_resume():
     flow = [
         paragraph("ELLIOT SHOHET", "name"),
-        paragraph("Senior Full-Stack Engineer", "title"),
-        paragraph("Remote US / Los Angeles hybrid  |  818-445-2786  |  elliot.shohet@gmail.com", "contact"),
+        paragraph("Senior Full-Stack Engineer | AI Product Engineering", "title"),
+        paragraph('Remote US / Los Angeles hybrid  |  <link href="tel:+18184452786">818-445-2786</link>  |  <link href="mailto:elliot.shohet@gmail.com">elliot.shohet@gmail.com</link>', "contact"),
         paragraph('<link href="https://elliotshohet.com">elliotshohet.com</link>  |  <link href="https://github.com/elliotshohet">github.com/elliotshohet</link>  |  <link href="https://linkedin.com/in/elliotshohet">linkedin.com/in/elliotshohet</link>', "contact"),
         *section("PROFILE"), paragraph(escape(PROFILE)),
-        *section("TECHNICAL SKILLS"), skills_table(),
         *section("PROFESSIONAL EXPERIENCE"),
-        *[role(*experience, first=index == 0) for index, experience in enumerate(EXPERIENCE)],
+        *[role(experience["name"], experience["role"], experience["period"],
+               experience["bullets"], first=index == 0)
+          for index, experience in enumerate(EXPERIENCE)],
+        *section("TECHNICAL SKILLS"), skills_table(),
         *section("EDUCATION"),
         aligned_row(
             paragraph("<b>University of California, Davis</b> | B.S. Computer Science", "role"),
             paragraph("2012 - 2017", "date"),
         ),
     ]
+    buffer = BytesIO()
+
+    def reject_extra_page(canvas, document):
+        raise ValueError("Resume exceeds one page; shorten the content before publishing.")
+
     SimpleDocTemplate(
-        str(OUTPUT), pagesize=letter, leftMargin=MARGIN, rightMargin=MARGIN,
+        buffer, pagesize=letter, leftMargin=MARGIN, rightMargin=MARGIN,
         topMargin=28, bottomMargin=28,
         title="Elliot Shohet - Senior Full-Stack Engineer", author="Elliot Shohet",
-    ).build(flow)
+    ).build(flow, onLaterPages=reject_extra_page)
+    OUTPUT.write_bytes(buffer.getvalue())
 
 
 if __name__ == "__main__":

@@ -23,7 +23,7 @@
 :root { color-scheme: dark; --bg: #080b09; --surface: #111a14; --text: #effaf2; --muted: #a6baac; --accent: #4ade80; --line: #293d30; --button-text: #06190d; }
 [data-theme="light"] { color-scheme: light; --bg: #f4faf5; --surface: #e6f2e9; --text: #0c1b11; --muted: #45634f; --accent: #16783c; --line: #c5dacb; --button-text: #ffffff; }
 html { background: var(--bg); color: var(--text); scroll-behavior: smooth; scroll-padding-top: 30px; }
-body { margin: 0; font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0; font-family: var(--font-geist), Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; }
 a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 6px; }
@@ -87,7 +87,7 @@ h3 { font-size: 22px; font-weight: 500; letter-spacing: -.5px; margin: 0 0 10px;
 .contact-email { display: inline-block; margin-top: 24px; color: var(--muted); font-size: 13px; }
 footer { display: flex; justify-content: space-between; gap: 25px; padding: 30px 0; color: var(--muted); font-size: 11px; }
 footer div { display: flex; align-items: center; gap: 24px; }
-.skip-link { position: absolute; top: -90px; left: 20px; background: var(--surface); padding: 12px; z-index: 10; }.skip-link:focus { top: 12px; }
+.skip-link { position: absolute; top: -90px; left: 20px; background: var(--surface); padding: 12px; z-index: 100; }.skip-link:focus { top: 12px; }
 @media (max-width: 900px) { .hero { gap: 5%; }.profile-card { padding: 24px; }.experience { grid-template-columns: 25px 180px 1fr; gap: 18px; }.earlier-grid { grid-template-columns: repeat(2,1fr); } }
 @media (max-width: 650px) {
   .site { padding: 0 6%; }.site-header { min-height: 85px; gap: 12px; }nav { gap: 14px; font-size: 11px; }
@@ -729,7 +729,7 @@ footer > p { margin: 0; }
 .hiring-site .hero-kicker { color: var(--accent); font-size: 12px; }
 .hiring-site .hero-redesign h1.hero-title { font-size: clamp(44px, 5vw, 70px); line-height: 1.08; }
 .hiring-site .hero-specialty { font-size: clamp(30px, 3.5vw, 48px); line-height: 1.15; letter-spacing: -.045em; margin: 18px 0 0; }
-.hiring-site .hero-specialty em { color: var(--accent); font-family: Georgia, serif; font-weight: 400; }
+.hiring-site .hero-specialty em { color: var(--accent); font-style: normal; font-weight: 500; }
 .hiring-site .hero-description { font-size: 18px; line-height: 1.75; margin-top: 24px; }
 .hiring-site .hero-background { font-size: 14px; line-height: 1.8; max-width: 540px; color: var(--muted); }
 .hiring-site .hero-role-location { display: flex; gap: 8px; align-items: center; color: var(--muted); font-size: 12px; margin: 20px 0 0; }
@@ -868,8 +868,9 @@ html { scroll-padding-top: 112px; }
 }
 .hero-unified .hero-copy { min-width: 0; }
 .hero-unified .hero-profile-card { padding: 0; border: 0; background: transparent; box-shadow: none; max-width: 320px; }
-.hiring-site .hero-unified .hero-specialty { font-size: clamp(30px, 3.3vw, 44px); }
+.hiring-site .hero-unified .hero-specialty { font-size: clamp(28px, 3vw, 40px); text-wrap: balance; }
 @media (max-width: 1000px) {
+  html { scroll-padding-top: 144px; }
   .hiring-site .hero.hero-unified { grid-template-columns: minmax(0, 1fr) minmax(240px, .8fr); gap: 32px; padding: 32px; }
 }
 @media (max-width: 800px) {
@@ -881,4 +882,22 @@ html { scroll-padding-top: 112px; }
   .hiring-site .hero-unified h1.hero-title { font-size: clamp(32px, 9vw, 52px); }
   .hiring-site .hero-role-caption [data-slot="badge"] { font-size: 12px; }
 }
-.hero-unified .profile-resume { width: 100%; margin-top: 12px; gap: 10px; }
+.hero-primary-actions .button { gap: 10px; }
+.experience-result { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 14px; margin: 20px 0 0; }
+.experience-result strong { color: var(--accent); font-size: 30px; font-weight: 500; letter-spacing: -.04em; }
+.experience-result span { color: var(--muted); font-size: 12px; }
+.contact .contact-email, .contact-intro .contact-email { display: inline-flex; align-items: center; min-height: 44px; margin-top: 16px; color: var(--accent); }
+.hero-unified .hero-copy { padding-block: 8px; }
+@media (max-width: 800px) {
+  .hiring-site .hero.hero-unified { grid-template-columns: minmax(0, 1fr) 220px; gap: 24px; padding: 28px; }
+  .hero-unified .hero-education { margin-top: 16px; padding-top: 16px; }
+}
+@media (max-width: 650px) {
+  html { scroll-padding-top: 128px; }
+  .site-header nav .nav-social { display: none; }
+  .hiring-site .hero.hero-unified { grid-template-columns: minmax(0, 1fr); padding: 24px; }
+  .hero-unified .hero-copy { padding: 0; }
+  .hiring-site .hero-unified .hero-specialty { font-size: clamp(27px, 7.5vw, 38px); }
+  .hero-primary-actions .button { padding-inline: 14px; }
+  .hero-unified .hero-profile-card { max-width: 280px; }
+}

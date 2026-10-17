@@ -1,6 +1,5 @@
 import { Badge } from "@/components/ui/badge";
 import { SkillBadge } from "@/components/skill-badge";
-import { CopyEmailButton } from "../../copy-email-button";
 import type { Metadata } from "next";
 import { Icon } from "../../ui-icon";
 import Image from "next/image";
@@ -48,7 +47,7 @@ export default async function Project({ params }: Props) {
     ],
   };
   const nextProject = relatedProjects[(relatedProjects.findIndex(item => item.slug === project.slug) + 1) % relatedProjects.length];
-  return <div className="site"><SiteHeader /><main id="main" className="case-study case-premium">
+  return <div className="site"><SiteHeader /><main id="main" tabIndex={-1} className="case-study case-premium">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
     <nav className="breadcrumbs" aria-label="Breadcrumb"><Link href="/"><Icon name="globe" />Home</Link><span aria-hidden="true">/</span><Link href={project.repository ? "/#projects" : "/#work"}>{collection}</Link><span aria-hidden="true">/</span><span aria-current="page">{project.name}</span></nav>
     <header className="case-masthead">
@@ -68,6 +67,6 @@ export default async function Project({ params }: Props) {
       </article>
     </div>
     <section id="case-flow" className="case-process" aria-labelledby="case-flow-heading"><div className="case-process-heading"><p className="eyebrow"><Icon name="workflow" />How it connects</p><h2 id="case-flow-heading">{project.flowHeading}</h2></div><ol>{project.flow.map((step, index) => <li key={step}><span className="case-step-number">{String(index + 1).padStart(2, "0")}</span><p>{step}</p>{index < project.flow.length - 1 && <Icon name="arrow" />}</li>)}</ol></section>
-    <section className="case-closing"><div><p className="eyebrow">Hiring a senior engineer?</p><h2>Let’s build what’s next.</h2><p>Senior full-stack and AI product engineering. Remote US or Los Angeles hybrid.</p><CopyEmailButton className="button primary"><Icon name="mail" />Email</CopyEmailButton></div><Link className="case-next-project" href={`/work/${nextProject.slug}`} target="_blank" rel="noopener noreferrer" data-track="project_open"><span className="eyebrow">Explore another {project.repository ? "project" : "case study"}</span><strong>{nextProject.name}</strong><span>{nextProject.title}</span><Icon name="diagonal" /></Link></section>
+    <section className="case-closing"><div><p className="eyebrow">Hiring a senior engineer?</p><h2>Let’s talk engineering.</h2><p>AI tools, mobile and web products, and the services behind them. Remote US or Los Angeles hybrid.</p><a className="button primary" href="mailto:elliot.shohet@gmail.com" data-track="email_click"><Icon name="mail" />Email Elliot</a></div><Link className="case-next-project" href={`/work/${nextProject.slug}`} target="_blank" rel="noopener noreferrer" data-track="project_open"><span className="eyebrow">Explore another {project.repository ? "project" : "case study"}</span><strong>{nextProject.name}</strong><span>{nextProject.title}</span><Icon name="diagonal" /></Link></section>
   </main><footer><Link href={project.repository ? "/#projects" : "/#work"}><Icon name="left" />{project.repository ? "All projects" : "All work"}</Link><a href="/elliot-shohet-resume.pdf" data-track="resume_download" target="_blank" rel="noopener noreferrer" aria-label="Download résumé PDF (opens in a new tab)"><Icon name="download" />Download résumé</a></footer></div>;
 }

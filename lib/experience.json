@@ -1,0 +1,45 @@
+[
+  {
+    "slug": "burn",
+    "name": "Burn",
+    "role": "Senior Full-Stack Engineer",
+    "period": "Oct 2022 - Present",
+    "bullets": [
+      "Own full-stack engineering for a mobile and web health product using React Native/Expo, Next.js, and PostgreSQL/Prisma in a shared TypeScript codebase.",
+      "Built streaming OpenAI coaching with LLM tool calling for meals, exercise, weight, and goals; used conversation locks and saved tool results to guard against overlapping replies and duplicate writes.",
+      "Integrated Google Health data and exposed health tools to ChatGPT through an OAuth-protected MCP server with scoped access and encrypted tokens.",
+      "Implemented native Google sign-in in Swift and Kotlin and direct App Store / Google Play subscription verification, checking purchase ownership, product, status, and environment.",
+      "Standardized database migrations, web/mobile development, and Android builds with Docker Compose; added release preflight checks and regression coverage for authentication, billing, and coaching."
+    ]
+  },
+  {
+    "slug": "niftys",
+    "name": "Nifty's",
+    "role": "Full-Stack Engineer",
+    "period": "May 2021 - Oct 2022",
+    "bullets": [
+      "Engineered Solidity smart contracts supporting 100,000+ NFT mints across Ethereum and Palm.",
+      "Automated smart-contract deployment and verification with TypeScript and CI/CD, making Ethereum and Palm releases repeatable across staging and production."
+    ]
+  },
+  {
+    "slug": "hypernet",
+    "name": "Hypernet Labs",
+    "role": "Full-Stack Engineer",
+    "period": "Feb 2019 - Feb 2020",
+    "bullets": [
+      "Architected layer-two ERC20 payment settlement infrastructure reaching 25 transactions per second.",
+      "Built a modular developer SDK with dependency injection and introduced CI/CD automation for repeatable delivery.",
+      "Managed a small engineering team and technical roadmaps while contributing architecture and implementation."
+    ]
+  },
+  {
+    "slug": "i2chain",
+    "name": "i2Chain, Inc.",
+    "role": "Full-Stack Engineer",
+    "period": "Sep 2018 - Feb 2019",
+    "bullets": [
+      "Built Electron/React/Redux desktop software and Node.js identity-based access controls; developed AWS Lambda services and operated a production geth node cluster."
+    ]
+  }
+]
