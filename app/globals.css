@@ -1773,3 +1773,21 @@ footer a {
     align-items: start;
   }
 }
+
+/* Recovery pages share the portfolio’s type and navigation. */
+.not-found-page {
+  min-height: 65vh;
+  padding-block: clamp(72px, 12vw, 150px);
+  max-width: 760px;
+}
+.not-found-page h1 {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  line-height: 1.06;
+  letter-spacing: -0.045em;
+  margin-block: 20px 24px;
+}
+.not-found-page > p:not(.eyebrow) {
+  color: var(--muted);
+  max-width: 48ch;
+  margin-bottom: 32px;
+}

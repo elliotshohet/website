@@ -31,6 +31,8 @@ export const metadata: Metadata = {
   },
 };
 export default function Contact() {
+  const burnProject = workProjects.find((project) => project.slug === "burn");
+  if (!burnProject) throw new Error("Burn project is missing from canonical work data");
   return (
     <div className="site">
       <SiteHeader />
@@ -128,7 +130,7 @@ export default function Contact() {
             <dt>Looking for</dt>
             <dd>Remote US or Los Angeles hybrid</dd>
             <dt>Currently</dt>
-            <dd>{workProjects[0].role} at Burn</dd>
+            <dd>{burnProject.role} at Burn</dd>
           </dl>
         </aside>
       </main>

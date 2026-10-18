@@ -44,6 +44,8 @@ const profile = {
   },
 };
 export default function Home() {
+  const burnProject = workProjects.find((project) => project.slug === "burn");
+  if (!burnProject) throw new Error("Burn project is missing from canonical work data");
   return (
     <div className="site">
       <script
@@ -157,14 +159,14 @@ export default function Home() {
             <div className="featured-copy">
               <div className="work-topline">
                 <span className="company-wordmark">Burn</span>
-                <span>{workProjects[0].period}</span>
+                <span>{burnProject.period}</span>
               </div>
               <h3>
                 Health tracking.
                 <br />
                 Meet AI coaching.
               </h3>
-              <p>{workProjects[0].summary}</p>
+              <p>{burnProject.summary}</p>
               <ul className="feature-points">
                 <li>Mobile & web on a shared TypeScript stack</li>
                 <li>Streaming AI with tools that act on health records</li>
@@ -178,7 +180,7 @@ export default function Home() {
                 Inside the project
                 <Icon name="diagonal" />
               </Link>
-              <p className="featured-role">{workProjects[0].role}</p>
+              <p className="featured-role">{burnProject.role}</p>
             </div>
             <figure className="product-stage">
               <Image
@@ -192,7 +194,7 @@ export default function Home() {
             </figure>
           </article>
           <div className="past-work">
-            {workProjects.slice(1).map((job) => (
+            {workProjects.filter((project) => project.slug !== "burn").map((job) => (
               <article className="past-work-row" key={job.slug}>
                 <div>
                   <h3>{job.name}</h3>

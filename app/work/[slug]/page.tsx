@@ -16,7 +16,9 @@ type Props = { params: Promise<{ slug: string }> };
 export function generateStaticParams() {
   return allProjects.map(({ slug }) => ({ slug }));
 }
-export const dynamicParams = false;
+// Resolve unknown slugs through notFound() so they share the site’s 404 UI.
+// Known projects remain prerendered by generateStaticParams.
+export const dynamicParams = true;
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = getProject((await params).slug);
   if (!project) notFound();
