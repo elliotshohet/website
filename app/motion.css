@@ -1,62 +1,37 @@
-/* Progressive motion: base layouts and all content remain visible without it. */
-@keyframes portfolio-enter {
-  from { opacity: .35; transform: translateY(14px); }
-  to { opacity: 1; transform: translateY(0); }
+/* One brief introduction; the rest of the site stays still while reading. */
+@keyframes introduction {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-@keyframes portfolio-reveal {
-  from { opacity: .7; translate: 0 18px; }
-  to { opacity: 1; translate: 0 0; }
-}
-
 @media (prefers-reduced-motion: no-preference) {
-  .hero-unified .hero-title,
-  .hero-unified .hero-role-caption,
-  .hero-unified .hero-specialty,
-  .hero-unified .hero-description,
-  .hero-unified .hero-background,
-  .hero-unified .hero-role-location,
-  .hero-unified .hero-copy > .actions,
-  .hero-unified .hero-profile-card {
-    animation: portfolio-enter .65s cubic-bezier(.2, .7, .2, 1) backwards;
+  .intro-layout {
+    animation: introduction 0.65s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   }
-  .hero-unified .hero-role-caption { animation-delay: .06s; }
-  .hero-unified .hero-specialty { animation-delay: .12s; }
-  .hero-unified .hero-description { animation-delay: .18s; }
-  .hero-unified .hero-background { animation-delay: .22s; }
-  .hero-unified .hero-role-location { animation-delay: .26s; }
-  .hero-unified .hero-copy > .actions { animation-delay: .3s; }
-  .hero-unified .hero-profile-card { animation-delay: .16s; }
-
-  @media (hover: hover) and (pointer: fine) {
-    .button, .profile-action, .project-card, .case-next-project {
-      transition: transform .24s ease, border-color .24s ease, box-shadow .24s ease, background-color .24s ease;
-    }
-    .button:hover, .profile-action:hover { transform: translateY(-2px); }
-    .project-card:hover, .case-next-project:hover {
-      transform: translateY(-2px);
-      border-color: color-mix(in srgb, var(--accent) 60%, var(--line));
-      box-shadow: 0 16px 38px #0002, 0 0 0 1px color-mix(in srgb, var(--accent) 8%, transparent);
-    }
-
-  }
-
-  @supports (animation-timeline: view()) {
-    .hiring-site .skill-group, .hiring-site .experience, .hiring-site .project-card,
-    .case-premium .case-chapter, .case-premium .case-process {
-      animation: portfolio-reveal linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 65%;
-    }
+  .button,
+  .theme-toggle,
+  .text-link,
+  .site-header a,
+  .portrait-links a {
+    transition:
+      background-color 0.18s ease,
+      color 0.18s ease,
+      border-color 0.18s ease;
   }
 }
-
 @media (prefers-reduced-motion: reduce) {
-  .hero-unified *, .project-card, .case-next-project, .case-chapter, .case-process,
-  .skill-group, .experience, .button, .profile-action {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
     animation: none !important;
     transition: none !important;
-    transform: none !important;
-    translate: none !important;
-    opacity: 1 !important;
   }
 }
