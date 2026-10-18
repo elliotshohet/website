@@ -2,6 +2,53 @@ import type { Project } from "./projects";
 
 export const githubProjects: Project[] = [
   {
+    slug: "coda",
+    name: "Coda / Freecoda",
+    website: "https://freecoda.com",
+    repository: "https://github.com/elliotshohet/freecoda",
+    title: "An AI coding assistant with approvals built in",
+    subtitle: "A shared agent core for terminal, desktop, and browser workflows, with explicit boundaries around code changes and hosted usage.",
+    description: "Coda, published as Freecoda: a TypeScript coding assistant with repository tools, reviewed edits, separate command approvals, and transactional hosted-usage accounting.",
+    role: "Personal project · Full-stack engineering",
+    period: "Oct 2026 · Active development",
+    tags: ["TypeScript", "Next.js", "Electron", "PostgreSQL", "AI SDK", "GitHub"],
+    summary: "Coda is my AI assistant and coding-agent project, published as Freecoda. The product brings conversation, repository context, and proposed code changes into terminal, desktop, and browser interfaces. The engineering problem is making an assistant useful on real code while keeping file access, command execution, credentials, and operating costs explicit.",
+    contribution: "Full-stack implementation across the shared agent and repository tools, terminal client, Electron desktop integration, and Next.js hosted service. The work connects reviewable edits and permission handling with model transport, persistent history, and PostgreSQL usage accounting.",
+    sections: [
+      {
+        heading: "From a question to a reviewed change",
+        text: "The local coding flow starts with a trusted project folder. The assistant can list files, search, and read permitted source before proposing an edit. Writes show a diff and require approval; shell commands have a separate approval. Plan and review modes expose read-only tools, while chat mode leaves repository tools out. This makes the available actions depend on the task rather than giving every conversation the same authority.",
+      },
+      {
+        heading: "One agent core, several interfaces",
+        text: "A TypeScript monorepo separates the agent loop and workspace tools from the terminal client, Electron application, and Next.js service. The core uses the AI SDK for model and tool orchestration, with shared contracts validating requests and allowance rules. The desktop integration keeps hosted credentials in the main process and exposes a limited interface to the renderer. This keeps permission decisions and repository behavior reusable without treating a browser, desktop window, and shell as interchangeable environments.",
+      },
+      {
+        heading: "Permission checks that survive tool calls",
+        text: "Repository tools reject paths outside the selected workspace, exclude symlinks and common credential files, and honor both Git ignore rules and project-specific exclusions. Approvals are serialized within each action category, and a refusal remains in effect for that category for the rest of the turn. These checks address parallel tool calls and repeated requests, not just the first approval dialog. An approved local shell command is still a real process with broader access; tool-level path checks do not turn it into an operating-system sandbox.",
+      },
+      {
+        heading: "Hosted usage accounted for before inference",
+        text: "The hosted service reserves estimated model cost in PostgreSQL before allowing a request. Transactions lock usage buckets, check daily and application-wide limits, and prevent overlapping unresolved reservations for the same user. Final usage settles a reservation; an interrupted request stays pending investigation until provider evidence supports reconciliation. The tradeoff is deliberately conservative capacity: uncertain usage can hold an allowance rather than silently treating a failed stream as free.",
+      },
+      {
+        heading: "Keeping private code out of the control plane",
+        text: "The cloud-workspace implementation separates untrusted project execution from trusted credentials and orchestration. Source and conversation records use encrypted PostgreSQL storage; workflow steps pass opaque identifiers. The repository includes sandbox lifecycle controls, short-lived preview authorization, and a reviewed publication path that checks the imported base commit before creating a new branch and draft pull request. This browser workflow remains beta work: implementing those boundaries is distinct from verifying the complete signed-in production journey.",
+      },
+      {
+        heading: "A public front door and protected workspace",
+        text: "The deployed web interface separates its public introduction and GitHub sign-in from authenticated chat, coding, and account routes. Saved tabs recheck the browser session; sign-out returns to the public page. Settings bring profile, appearance, actual usage, devices, and existing repository connections together. These flows have local browser coverage, while the live GitHub OAuth callback still needs end-to-end verification. The page reports unavailable integrations rather than replacing provider responses or connection state with fixtures.",
+      },
+      {
+        heading: "A sustainable product with honest release boundaries",
+        text: "Freecoda is open source under Apache 2.0, with a sponsor-supported hosted model and explicit usage limits. Sponsor placements are labeled and selected without code or prompt targeting. The project includes CLI, web, and desktop build paths, tests around agent permissions and accounting, and Linux installer artifacts. Public web deployment and successful builds do not establish production OAuth callback correctness or interactive readiness on every native platform. Cloud workspace restoration remains beta work; no adoption, revenue, or universal platform-readiness claim is implied.",
+      },
+    ],
+    outcome: "A shared coding-agent implementation with approval-aware repository tools, terminal and desktop clients, and a deployed web service. The project demonstrates product engineering across interfaces, execution boundaries, and operational accounting; the signed-in browser workspace remains under active validation.",
+    flowHeading: "From intent to a proposed edit",
+    flow: ["Choose a trusted repository", "Read permitted context", "Review a diff or command", "Approve, execute & inspect"],
+  },
+  {
     slug: "pets-saas",
     name: "Pets",
     repository: "https://github.com/elliotshohet/pets-saas",

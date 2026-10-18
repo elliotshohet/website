@@ -9,6 +9,10 @@ import canonicalSkills from "../lib/skills.json";
 
 const linkedin = "https://www.linkedin.com/in/elliotshohet/";
 const github = "https://github.com/elliotshohet";
+const companyLogos: Record<string, { src: string; width: number; height: number }> = {
+  niftys: { src: "/companies/niftys.png", width: 64, height: 64 },
+  hypernet: { src: "/companies/hypernet.svg", width: 168, height: 43 },
+};
 const skillGroups = canonicalSkills as {
   title: string;
   icon: IconName;
@@ -158,7 +162,10 @@ export default function Home() {
           <article className="featured-work">
             <div className="featured-copy">
               <div className="work-topline">
-                <span className="company-wordmark">Burn</span>
+                <span className="company-wordmark">
+                  <Image className="logo-light" src="/companies/burn.svg" alt="Burn" width={126} height={36} unoptimized />
+                  <Image className="logo-dark" src="/companies/burn-dark.svg" alt="Burn" width={126} height={36} unoptimized />
+                </span>
                 <span>{burnProject.period}</span>
               </div>
               <h3>
@@ -197,6 +204,14 @@ export default function Home() {
             {workProjects.filter((project) => project.slug !== "burn").map((job) => (
               <article className="past-work-row" key={job.slug}>
                 <div>
+                  {companyLogos[job.slug] && (
+                    <Image
+                      className={`work-company-logo work-company-logo-${job.slug}`}
+                      {...companyLogos[job.slug]}
+                      alt=""
+                      unoptimized
+                    />
+                  )}
                   <h3>{job.name}</h3>
                   <span>{job.period}</span>
                 </div>
@@ -252,16 +267,21 @@ export default function Home() {
           </div>
           <div className="repo-layout">
             {projects
-              .filter((p) => p.slug === "pets-saas")
+              .filter((p) => p.slug === "coda")
               .map((project) => (
                 <article className="featured-repo" key={project.slug}>
                   <div className="repo-title">
-                    <Icon name="github" />
+                    <Image src="/projects/freecoda-mark.svg" alt="" width={36} height={36} unoptimized />
                     <span>{project.name}</span>
                     <span className="repo-period">{project.period}</span>
                   </div>
                   <h3>{project.title}</h3>
-                  <p>{project.description}</p>
+                  <p>{project.summary}</p>
+                  <ul className="feature-points">
+                    <li>Shared agent core across terminal, desktop, and web</li>
+                    <li>Reviewed edits and separate command approvals</li>
+                    <li>Transactional usage limits and credential boundaries</li>
+                  </ul>
                   <ul className="tags">
                     {project.tags.map((tag) => (
                       <li key={tag}>
@@ -271,8 +291,17 @@ export default function Home() {
                   </ul>
                   <div className="actions">
                     <a
-                      href={project.repository}
+                      href={project.website}
                       className="button primary"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Visit Freecoda
+                      <Icon name="external" />
+                    </a>
+                    <a
+                      href={project.repository}
+                      className="text-link"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -284,7 +313,7 @@ export default function Home() {
                       className="text-link"
                       data-track="project_open"
                     >
-                      Project details
+                      Inside Coda
                       <Icon name="diagonal" />
                     </Link>
                   </div>
@@ -293,7 +322,7 @@ export default function Home() {
             <div className="repo-archive">
               <h3>From the archive</h3>
               {projects
-                .filter((p) => p.slug !== "pets-saas")
+                .filter((p) => p.slug !== "coda")
                 .map((project) => (
                   <article key={project.slug}>
                     <Link
@@ -343,6 +372,15 @@ export default function Home() {
           </div>
           <div className="education-note">
             <Image
+              className="logo-light"
+              src="/companies/uc-davis-light.svg"
+              alt="UC Davis"
+              width={130}
+              height={45}
+              unoptimized
+            />
+            <Image
+              className="logo-dark"
               src="/companies/uc-davis.svg"
               alt="UC Davis"
               width={130}

@@ -45,8 +45,8 @@
   --button-text: #112d34;
   --stage: #244a59;
   --stage-line: #426575;
-  --contact-bg: #dceee8;
-  --contact-text: #163f46;
+  --contact-bg: #193b43;
+  --contact-text: #edf6f2;
 }
 * {
   box-sizing: border-box;
@@ -322,6 +322,7 @@ section[id] {
 }
 .portrait-note {
   padding-top: 5px;
+  text-align: center;
 }
 .portrait-frame {
   background: var(--soft);
@@ -347,8 +348,9 @@ section[id] {
 }
 .portrait-links {
   display: flex;
+  justify-content: center;
   gap: 7px;
-  margin: 10px 0 0 -10px;
+  margin: 10px 0 0;
 }
 .portrait-links a {
   width: 44px;
@@ -423,6 +425,27 @@ section[id] {
     600 32px var(--font-display),
     sans-serif;
   letter-spacing: -0.065em;
+}
+.logo-dark {
+  display: none;
+}
+[data-theme="dark"] .logo-light {
+  display: none;
+}
+[data-theme="dark"] .logo-dark {
+  display: block;
+}
+.work-company-logo {
+  max-width: 100%;
+  object-fit: contain;
+  object-position: left center;
+  margin-bottom: 14px;
+}
+.work-company-logo-niftys {
+  border-radius: 8px;
+}
+[data-theme="light"] .work-company-logo-hypernet {
+  filter: brightness(0.45);
 }
 .work-topline > span:last-child {
   font-size: 12px;
@@ -665,8 +688,6 @@ section[id] {
   height: 44px;
   object-fit: contain;
   padding: 4px 7px;
-  background: #ffffff;
-  border-radius: 4px;
 }
 .education-note p {
   font-size: 14px;
