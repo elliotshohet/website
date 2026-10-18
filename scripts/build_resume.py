@@ -28,6 +28,8 @@ RULE = colors.HexColor("#cbd5ce")
 
 # Use native fonts when available, with a portable bundled fallback.
 FONT_PAIRS = [
+    (Path("/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf"),
+     Path("/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf")),
     (Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"),
      Path("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf")),
     (Path("/System/Library/Fonts/Supplemental/Arial.ttf"),
@@ -47,13 +49,13 @@ STYLES = {
     "name": ParagraphStyle("Name", fontName="ResumeSans-Bold", fontSize=25, leading=28, textColor=GREEN),
     "title": ParagraphStyle("Title", fontName="ResumeSans", fontSize=11.5, leading=16, spaceAfter=5, textColor=INK),
     "contact": ParagraphStyle("Contact", fontName="ResumeSans", fontSize=8.3, leading=11.5, textColor=MUTED),
-    "section": ParagraphStyle("Section", fontName="ResumeSans-Bold", fontSize=9.2, leading=12, textColor=GREEN),
-    "body": ParagraphStyle("Body", fontName="ResumeSans", fontSize=10, leading=13.5, textColor=INK),
+    "section": ParagraphStyle("Section", fontName="ResumeSans-Bold", fontSize=9.2, leading=11.5, textColor=GREEN),
+    "body": ParagraphStyle("Body", fontName="ResumeSans", fontSize=10, leading=12.5, textColor=INK),
     "skill_label": ParagraphStyle("SkillLabel", fontName="ResumeSans-Bold", fontSize=8.7, leading=11.5, textColor=GREEN),
-    "skill_value": ParagraphStyle("SkillValue", fontName="ResumeSans", fontSize=9.2, leading=12, textColor=INK),
+    "skill_value": ParagraphStyle("SkillValue", fontName="ResumeSans", fontSize=9.2, leading=11.5, textColor=INK),
     "role": ParagraphStyle("Role", fontName="ResumeSans", fontSize=9.7, leading=13, textColor=INK),
     "date": ParagraphStyle("Date", fontName="ResumeSans", fontSize=9, leading=13, alignment=TA_RIGHT, textColor=MUTED),
-    "bullet": ParagraphStyle("Bullet", fontName="ResumeSans", fontSize=10, leading=13.2, leftIndent=10, firstLineIndent=0, bulletIndent=0, bulletFontName="ResumeSans", bulletFontSize=7.5, spaceAfter=3, textColor=INK),
+    "bullet": ParagraphStyle("Bullet", fontName="ResumeSans", fontSize=10, leading=12.5, leftIndent=10, firstLineIndent=0, bulletIndent=0, bulletFontName="ResumeSans", bulletFontSize=7.5, spaceAfter=1.5, textColor=INK),
 }
 
 # Keep the complete skills taxonomy aligned with the website.
@@ -71,11 +73,11 @@ def paragraph(text, style="body"):
 
 def section(title):
     return [
-        Spacer(1, 6),
+        Spacer(1, 4),
         paragraph(title, "section"),
         Spacer(1, 3),
         HRFlowable(width="100%", thickness=0.5, color=RULE),
-        Spacer(1, 5),
+        Spacer(1, 4),
     ]
 
 
@@ -103,7 +105,7 @@ def skills_table():
         ("RIGHTPADDING", (0, 0), (0, -1), 9),
         ("RIGHTPADDING", (1, 0), (1, -1), 0),
         ("TOPPADDING", (0, 0), (-1, -1), 1),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 2),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 1),
     ]))
     return table
 
@@ -138,6 +140,12 @@ def build_resume():
         *[role(experience["name"], experience["role"], experience["period"],
                experience["bullets"], first=index == 0)
           for index, experience in enumerate(EXPERIENCE)],
+        *section("PROJECTS"),
+        aligned_row(
+            paragraph('<b>Freecoda</b> | AI coding assistant', "role"),
+            paragraph('<link href="https://freecoda.com">freecoda.com</link>', "date"),
+        ),
+        Paragraph("Built a TypeScript coding assistant spanning terminal, Electron, and Next.js; implemented reviewed edits, command approvals, and transactional PostgreSQL reservations for hosted model usage.", STYLES["bullet"], bulletText="•"),
         *section("TECHNICAL SKILLS"), skills_table(),
         *section("EDUCATION"),
         aligned_row(
