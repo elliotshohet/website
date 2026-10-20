@@ -67,6 +67,7 @@ export default function Home() {
         >
           <div className="intro-layout">
             <div>
+              <p className="intro-eyebrow"><span /> DESIGN MINDED ENGINEERING · LOS ANGELES</p>
               <h1 id="intro-heading">
                 Elliot
                 <br />

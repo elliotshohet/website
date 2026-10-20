@@ -20,17 +20,17 @@
 }
 :root {
   color-scheme: light;
-  --bg: #f5f8f7;
-  --surface: #ffffff;
-  --soft: #e0eeea;
-  --text: #163f46;
-  --muted: #526b70;
-  --accent: #176f70;
-  --line: #ccdbd8;
+  --bg: #f7f6f2;
+  --surface: #fffefa;
+  --soft: #e9f1ed;
+  --text: #173934;
+  --muted: #586d68;
+  --accent: #176e5c;
+  --line: #d6dfd8;
   --button-text: #ffffff;
-  --stage: #dce8ef;
+  --stage: #dde9df;
   --stage-line: #b5ced5;
-  --contact-bg: #163f46;
+  --contact-bg: #173934;
   --contact-text: #f0f8f5;
 }
 [data-theme="dark"] {
@@ -1890,4 +1890,99 @@ footer a {
   color: var(--muted);
   max-width: 48ch;
   margin-bottom: 32px;
+}
+
+/* Editorial finish for the portfolio's shared visual system. */
+.site-header {
+  min-height: 92px;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+}
+.site-name { letter-spacing: -0.075em; }
+.site-header .nav-contact,
+.button { transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
+.button:hover { transform: translateY(-2px); }
+.button.primary { box-shadow: 0 8px 18px color-mix(in srgb, var(--accent) 18%, transparent); }
+.intro-hero {
+  position: relative;
+  isolation: isolate;
+  margin-top: 28px;
+  border-radius: 24px;
+  background: radial-gradient(circle at 77% 20%, #2c6459 0, transparent 39%), linear-gradient(140deg, #173934 0%, #102d2a 100%);
+  box-shadow: 0 28px 70px #16392f1a;
+}
+.intro-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: .13;
+  background-image: linear-gradient(#bde1cf 1px, transparent 1px), linear-gradient(90deg, #bde1cf 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: linear-gradient(90deg, transparent 32%, black);
+  pointer-events: none;
+}
+.intro-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin: 0 0 32px;
+  color: #bedacb;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: .17em;
+}
+.intro-eyebrow span { width: 28px; height: 1px; background: #b9dccc; }
+.intro-layout h1 { font-size: clamp(72px, 8.8vw, 128px); }
+.intro-title { color: #c3e7d4; }
+.intro-description { max-width: 490px; color: #e0ebe4; }
+.intro-hero .button.primary { background: #c4e7d1; }
+.portrait-frame {
+  padding: 10px;
+  background: linear-gradient(145deg, #d5efda, #78a999);
+  box-shadow: 18px 20px 0 #071c1840;
+}
+.portrait-links { margin-top: 20px; }
+.portrait-links a { border: 1px solid #ffffff35; }
+.intro-bottom { background: #ffffff12; border-top: 1px solid #ffffff18; }
+.section { padding-block: 100px; }
+.section-heading h2 { max-width: 13ch; }
+.section-heading p { font-size: 17px; }
+.featured-work {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: 0 18px 55px #1739340d;
+}
+.featured-copy { padding: clamp(38px, 4vw, 58px); }
+.featured-copy h3 { letter-spacing: -.055em; }
+.product-stage {
+  background: radial-gradient(circle at 50% 40%, #f0f5df, transparent 55%), var(--stage);
+}
+.product-stage img { box-shadow: 18px 24px 36px #17393432; transform: rotate(-3deg); }
+.past-work-row { transition: padding .2s ease, background .2s ease; }
+.past-work-row:hover { background: color-mix(in srgb, var(--soft) 55%, transparent); padding-inline: 18px; }
+.featured-repo { border: 1px solid var(--line); border-radius: 18px; }
+.contact { border-radius: 20px; box-shadow: 0 22px 50px #17393416; }
+[data-theme="dark"] .intro-hero { background: radial-gradient(circle at 77% 20%, #315b53 0, transparent 40%), #102824; }
+[data-theme="dark"] .product-stage { background: radial-gradient(circle at 50% 40%, #365f59, transparent 57%), var(--stage); }
+@media (max-width: 800px) {
+  .intro-eyebrow { margin-bottom: 24px; }
+  .section { padding-block: 76px; }
+}
+@media (max-width: 600px) {
+  .site-header { min-height: 72px; }
+  .intro-hero { border-radius: 18px; margin-top: 18px; }
+  .intro-eyebrow { font-size: 9px; letter-spacing: .11em; margin-bottom: 21px; }
+  .intro-layout h1 { font-size: clamp(64px, 16vw, 90px); }
+  .portrait-frame { box-shadow: 8px 10px 0 #071c1836; }
+  .section { padding-block: 62px; }
+  .section-heading p { font-size: 15px; }
+  .featured-copy { padding: 28px; }
+  .past-work-row:hover { padding-inline: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .button, .past-work-row { transition: none; }
+  .button:hover { transform: none; }
 }
