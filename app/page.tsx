@@ -65,20 +65,17 @@ export default function Home() {
           className="intro-hero"
           aria-labelledby="intro-heading"
         >
-          <div className="intro-topline">
-            <p>Full-stack engineer</p>
-            <p>Los Angeles, California</p>
-          </div>
           <div className="intro-layout">
             <div>
               <h1 id="intro-heading">
-                Useful products.
+                Elliot
                 <br />
-                Every layer.
+                Shohet.
               </h1>
+              <p className="intro-title">Full-stack Engineer</p>
               <p className="intro-description">
-                I’m Elliot Shohet. I build AI products across mobile, web, and
-                the services that make them work.
+                I build AI products across mobile, web, and the services that
+                make them work.
               </p>
               <div className="actions">
                 <a className="button primary" href="#work">
@@ -108,8 +105,6 @@ export default function Home() {
                   preload
                 />
               </div>
-              <p>Elliot Shohet</p>
-              <span>Engineer. Product builder.</span>
               <div className="portrait-links">
                 <a
                   href={github}
@@ -267,7 +262,7 @@ export default function Home() {
           </div>
           <div className="repo-layout">
             {projects
-              .filter((p) => p.slug === "coda")
+              .filter((p) => p.slug === "freecoda")
               .map((project) => (
                 <article className="featured-repo" key={project.slug}>
                   <div className="repo-title">
@@ -278,9 +273,9 @@ export default function Home() {
                   <h3>{project.title}</h3>
                   <p>{project.summary}</p>
                   <ul className="feature-points">
-                    <li>Shared agent core across terminal, desktop, and web</li>
-                    <li>Reviewed edits and separate command approvals</li>
-                    <li>Transactional usage limits and credential boundaries</li>
+                    <li>Desktop, web, and terminal clients</li>
+                    <li>Project changes with explicit permissions</li>
+                    <li>Free hosted beta with clear allowance limits</li>
                   </ul>
                   <ul className="tags">
                     {project.tags.map((tag) => (
@@ -313,16 +308,26 @@ export default function Home() {
                       className="text-link"
                       data-track="project_open"
                     >
-                      Inside Coda
+                      Inside Freecoda
                       <Icon name="diagonal" />
                     </Link>
                   </div>
+                  <figure className="freecoda-preview">
+                    <Image
+                      src="/projects/freecoda-desktop-preview.webp"
+                      alt="Freecoda desktop interface preview showing the conversation workspace"
+                      width={1480}
+                      height={950}
+                      sizes="(max-width: 800px) 100vw, 560px"
+                    />
+                    <figcaption>Freecoda desktop interface preview</figcaption>
+                  </figure>
                 </article>
               ))}
             <div className="repo-archive">
               <h3>From the archive</h3>
               {projects
-                .filter((p) => p.slug !== "coda")
+                .filter((p) => p.slug !== "freecoda")
                 .map((project) => (
                   <article key={project.slug}>
                     <Link

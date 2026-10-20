@@ -279,6 +279,18 @@ export default async function Project({ params }: Props) {
                 </figcaption>
               </figure>
             )}
+            {project.slug === "freecoda" && (
+              <figure className="case-desktop-visual">
+                <Image
+                  src="/projects/freecoda-desktop-preview.webp"
+                  alt="Freecoda desktop interface preview showing the conversation workspace"
+                  width={1480}
+                  height={950}
+                  sizes="(max-width: 800px) 100vw, 760px"
+                />
+                <figcaption>Freecoda desktop interface preview from the public site.</figcaption>
+              </figure>
+            )}
             {project.sections.map((section, index) => (
               <section
                 className="case-chapter"
