@@ -5,6 +5,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { workProjects } from "@/lib/projects";
 import { SiteHeader } from "../site-header";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 export const metadata: Metadata = {
   title: "Contact Elliot Shohet | Full-stack Engineer",
   description:
@@ -114,24 +121,34 @@ export default function Contact() {
           </div>
         </div>
         <aside className="contact-profile" aria-label="About Elliot">
-          <Image
-            src="/elliot-shohet-headshot.png"
-            alt="Elliot Shohet"
-            width={640}
-            height={640}
-            sizes="(max-width: 600px) 200px, 280px"
-            preload
-          />
-          <h2>Elliot Shohet</h2>
-          <p>Full-stack engineer building AI products, end to end.</p>
-          <dl>
-            <dt>Based in</dt>
-            <dd>Los Angeles, California</dd>
-            <dt>Looking for</dt>
-            <dd>Remote US or Los Angeles hybrid</dd>
-            <dt>Currently</dt>
-            <dd>{burnProject.role} at Burn</dd>
-          </dl>
+          <Card className="contact-profile-card">
+            <Image
+              src="/elliot-shohet-headshot.png"
+              alt="Elliot Shohet"
+              width={640}
+              height={640}
+              sizes="(max-width: 600px) 200px, 280px"
+              preload
+            />
+            <CardHeader className="contact-profile-header">
+              <CardTitle>
+                <h2>Elliot Shohet</h2>
+              </CardTitle>
+              <CardDescription>
+                <p>Full-stack engineer building AI products, end to end.</p>
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="contact-profile-content">
+              <dl>
+                <dt>Based in</dt>
+                <dd>Los Angeles, California</dd>
+                <dt>Looking for</dt>
+                <dd>Remote US or Los Angeles hybrid</dd>
+                <dt>Currently</dt>
+                <dd>{burnProject.role} at Burn</dd>
+              </dl>
+            </CardContent>
+          </Card>
         </aside>
       </main>
       <footer>

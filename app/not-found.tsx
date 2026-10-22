@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SiteHeader } from "./site-header";
 import { Icon } from "./ui-icon";
+import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
   return (
@@ -11,8 +12,12 @@ export default function NotFound() {
         <h1>This page isn’t here.</h1>
         <p>The link may be out of date. Explore my engineering work or get in touch.</p>
         <div className="actions">
-          <Link className="button primary" href="/#work"><Icon name="left" />Explore my work</Link>
-          <Link className="button secondary" href="/contact">Contact Elliot</Link>
+          <Button asChild className="button primary h-auto">
+            <Link href="/#work"><Icon name="left" data-icon="inline-start" />Explore my work</Link>
+          </Button>
+          <Button asChild variant="outline" className="button secondary h-auto">
+            <Link href="/contact">Contact Elliot</Link>
+          </Button>
         </div>
       </main>
     </div>

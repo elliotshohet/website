@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ThemeToggle } from "./theme";
+import { Button } from "@/components/ui/button";
 
 export function SiteHeader() {
   return (
@@ -44,9 +45,9 @@ export function SiteHeader() {
         >
           Résumé
         </a>
-        <Link className="nav-contact" href="/contact">
-          Let’s talk
-        </Link>
+        <Button asChild variant="outline" className="nav-contact h-auto">
+          <Link href="/contact">Let’s talk</Link>
+        </Button>
         <ThemeToggle />
       </nav>
     </header>

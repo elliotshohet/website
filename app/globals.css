@@ -5,6 +5,8 @@
 @theme inline {
   --color-background: var(--bg);
   --color-foreground: var(--text);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--text);
   --color-primary: var(--accent);
   --color-primary-foreground: var(--button-text);
   --color-secondary: var(--soft);
@@ -437,6 +439,11 @@ section[id] {
   background: var(--surface);
   border-radius: 14px;
   overflow: hidden;
+  gap: 0;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  color: inherit;
 }
 .featured-copy {
   padding: 42px;
@@ -547,6 +554,14 @@ section[id] {
   gap: 65px;
   padding: 34px 0;
   border-bottom: 1px solid var(--line);
+  gap: 65px;
+  border-radius: 0;
+  border-top: 0;
+  border-inline: 0;
+  border-bottom-color: var(--line);
+  box-shadow: none;
+  background: transparent;
+  color: inherit;
 }
 .past-work-row h3 {
   margin-bottom: 9px;
@@ -582,6 +597,12 @@ section[id] {
   padding-top: 25px;
   color: var(--muted);
   font-size: 13px;
+  flex-direction: row;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  color: var(--muted);
 }
 .career-note p {
   margin: 0;
@@ -604,6 +625,10 @@ section[id] {
   padding: 35px;
   border-radius: 12px;
   align-self: start;
+  gap: 0;
+  border: 0;
+  box-shadow: none;
+  color: inherit;
 }
 .repo-title {
   display: flex;
@@ -701,17 +726,34 @@ section[id] {
 .skill-group {
   padding: 24px 0;
   border-bottom: 1px solid var(--line);
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  gap: 0;
   min-width: 0;
 }
-.skill-group h3 {
+.skill-card-header {
+  display: block;
+  padding: 0;
+}
+.skill-group [data-slot="card-title"] {
+  font-family: var(--font-display), Arial, sans-serif;
   font-size: 19px;
+  font-weight: 500;
+  line-height: 1.12;
   letter-spacing: -0.025em;
 }
-.skill-group .tags {
+.skill-card-content {
+  padding: 0;
+}
+.skill-card-content .tags {
   margin-top: 16px;
   gap: 9px;
 }
-.skill-group [data-slot="badge"] {
+.skill-card-content [data-slot="badge"] {
   border: 0;
   padding: 4px 0;
   background: transparent;
@@ -988,6 +1030,10 @@ footer a {
   display: flex;
   gap: 18px;
   align-items: start;
+  gap: 18px;
+  padding: 26px;
+  box-shadow: none;
+  color: inherit;
 }
 .case-scope-panel > .ui-icon,
 .case-outcome-panel > .ui-icon {
@@ -1006,6 +1052,7 @@ footer a {
 .case-outcome-panel {
   background: transparent;
   border: 1px solid var(--line);
+  background: transparent;
 }
 .case-outcome-panel .eyebrow {
   display: block;
@@ -1191,6 +1238,29 @@ footer a {
   padding: 30px;
   background: var(--soft);
   border-radius: 12px;
+}
+.contact-profile-card {
+  padding: 0;
+  gap: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.contact-profile-header,
+.contact-profile-content {
+  display: block;
+  padding: 0;
+}
+.contact-profile-header [data-slot="card-title"] h2,
+.contact-profile-header [data-slot="card-description"] p {
+  margin: 0;
+}
+.contact-profile-header [data-slot="card-description"] {
+  color: inherit;
+}
+.contact-profile-header [data-slot="card-description"] p {
+  margin-bottom: 20px;
 }
 .contact-profile img {
   width: 100%;

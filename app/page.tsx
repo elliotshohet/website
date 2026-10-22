@@ -6,6 +6,13 @@ import Image from "next/image";
 import { SiteHeader } from "./site-header";
 import { projects, workProjects } from "../lib/projects";
 import canonicalSkills from "../lib/skills.json";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 const linkedin = "https://www.linkedin.com/in/elliotshohet/";
 const github = "https://github.com/elliotshohet";
@@ -79,20 +86,28 @@ export default function Home() {
                 make them work.
               </p>
               <div className="actions">
-                <a className="button primary" href="#work">
-                  Explore my work
-                  <Icon name="down" />
-                </a>
-                <a
-                  className="button secondary"
-                  href="/elliot-shohet-resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-track="resume_download"
+                <Button asChild size="lg" className="button primary h-auto">
+                  <a href="#work">
+                    Explore my work
+                    <Icon name="down" data-icon="inline-end" />
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="button secondary h-auto"
                 >
-                  View résumé
-                  <Icon name="download" />
-                </a>
+                  <a
+                    href="/elliot-shohet-resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-track="resume_download"
+                  >
+                    View résumé
+                    <Icon name="download" data-icon="inline-end" />
+                  </a>
+                </Button>
               </div>
             </div>
             <aside className="portrait-note">
@@ -155,7 +170,7 @@ export default function Home() {
               across both.
             </p>
           </div>
-          <article className="featured-work">
+          <Card className="featured-work">
             <div className="featured-copy">
               <div className="work-topline">
                 <span className="company-wordmark">
@@ -195,10 +210,10 @@ export default function Home() {
               />
               <figcaption>Burn’s mobile nutrition dashboard.</figcaption>
             </figure>
-          </article>
+          </Card>
           <div className="past-work">
             {workProjects.filter((project) => project.slug !== "burn").map((job) => (
-              <article className="past-work-row" key={job.slug}>
+              <Card className="past-work-row" key={job.slug}>
                 <div>
                   {companyLogos[job.slug] && (
                     <Image
@@ -229,10 +244,10 @@ export default function Home() {
                     </Link>
                   </div>
                 </div>
-              </article>
+              </Card>
             ))}
           </div>
-          <div className="career-note">
+          <Card className="career-note">
             <Icon name="briefcase" />
             <p>
               Previously at i2Chain, building desktop software, access controls,
@@ -248,7 +263,7 @@ export default function Home() {
               Full résumé
               <Icon name="download" />
             </a>
-          </div>
+          </Card>
         </section>
         <section
           id="projects"
@@ -265,7 +280,7 @@ export default function Home() {
             {projects
               .filter((p) => p.slug === "freecoda")
               .map((project) => (
-                <article className="featured-repo" key={project.slug}>
+                <Card className="featured-repo" key={project.slug}>
                   <div className="repo-title">
                     <Image src="/projects/freecoda-mark.svg" alt="" width={36} height={36} unoptimized />
                     <span>{project.name}</span>
@@ -323,14 +338,14 @@ export default function Home() {
                     />
                     <figcaption>Freecoda desktop interface preview</figcaption>
                   </figure>
-                </article>
+                </Card>
               ))}
-            <div className="repo-archive">
+            <Card className="repo-archive">
               <h3>From the archive</h3>
               {projects
                 .filter((p) => p.slug !== "freecoda")
                 .map((project) => (
-                  <article key={project.slug}>
+                  <Card key={project.slug}>
                     <Link
                       href={`/work/${project.slug}`}
                       data-track="project_open"
@@ -348,9 +363,9 @@ export default function Home() {
                       Source code
                       <Icon name="github" />
                     </a>
-                  </article>
+                  </Card>
                 ))}
-            </div>
+            </Card>
           </div>
         </section>
         <section
@@ -364,16 +379,20 @@ export default function Home() {
           </div>
           <div className="skills-grid">
             {skillGroups.map((group) => (
-              <div className="skill-group" key={group.title}>
-                <h3>{group.title}</h3>
-                <ul className="tags">
-                  {group.skills.map((skill) => (
-                    <li key={skill}>
-                      <SkillBadge skill={skill} />
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <Card className="skill-group" key={group.title}>
+                <CardHeader className="skill-card-header">
+                  <CardTitle>{group.title}</CardTitle>
+                </CardHeader>
+                <CardContent className="skill-card-content">
+                  <ul className="tags">
+                    {group.skills.map((skill) => (
+                      <li key={skill}>
+                        <SkillBadge skill={skill} />
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
             ))}
           </div>
           <div className="education-note">

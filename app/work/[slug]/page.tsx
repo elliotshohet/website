@@ -12,6 +12,7 @@ import {
   getProject,
 } from "../../../lib/projects";
 import { SiteHeader } from "../../site-header";
+import { Card } from "@/components/ui/card";
 type Props = { params: Promise<{ slug: string }> };
 export function generateStaticParams() {
   return allProjects.map(({ slug }) => ({ slug }));
@@ -236,7 +237,7 @@ export default async function Project({ params }: Props) {
             >
               <h2 id="case-overview-heading">The project at a glance.</h2>
               <p className="case-lead">{project.summary}</p>
-              <div className="case-scope-panel">
+              <Card className="case-scope-panel">
                 <Icon name="code" />
                 <div>
                   <h3>
@@ -244,8 +245,8 @@ export default async function Project({ params }: Props) {
                   </h3>
                   <p>{project.contribution}</p>
                 </div>
-              </div>
-              <div className="case-outcome-panel">
+              </Card>
+              <Card className="case-outcome-panel">
                 {project.metric ? (
                   <div className="case-metric">
                     <strong>{project.metric.value}</strong>
@@ -260,7 +261,7 @@ export default async function Project({ params }: Props) {
                   </p>
                   <p>{project.outcome}</p>
                 </div>
-              </div>
+              </Card>
             </section>
             {project.slug === "burn" && (
               <figure className="case-product-visual">
@@ -316,7 +317,7 @@ export default async function Project({ params }: Props) {
           </div>
           <ol>
             {project.flow.map((step, index) => (
-              <li key={step}>
+            <li key={step}>
                 <span className="case-step-number">
                   {String(index + 1).padStart(2, "0")}
                 </span>
