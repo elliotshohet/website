@@ -1,9 +1,117 @@
 [
-  { "title": "Languages & UI", "icon": "code", "skills": ["TypeScript", "JavaScript", "React", "Next.js", "React Native", "Expo", "Tailwind CSS", "shadcn/ui", "Python"] },
-  { "title": "Backend & APIs", "icon": "server", "skills": ["Node.js", "REST APIs", "GraphQL", "WebSockets", "OAuth"] },
-  { "title": "Data", "icon": "database", "skills": ["PostgreSQL", "Prisma", "Supabase", "Redis", "NoSQL"] },
-  { "title": "AI & integrations", "icon": "spark", "skills": ["OpenAI", "Large language models (LLMs)", "Model Context Protocol (MCP)"] },
-  { "title": "Cloud", "icon": "cloud", "skills": ["Vercel", "AWS Lambda", "Amazon EC2", "Amazon S3", "Amazon RDS", "Google Cloud Platform (GCP)", "Google Cloud Storage"] },
-  { "title": "DevOps", "icon": "workflow", "skills": ["Docker", "Docker Compose", "Linux", "CI/CD", "GitHub Actions"] },
-  { "title": "Testing", "icon": "flask", "skills": ["End-to-end testing", "Playwright", "Jest", "Mocha", "Chai"] }
+  {
+    "title": "AI",
+    "icon": "spark",
+    "skills": [
+      "OpenAI",
+      "Large language models (LLMs)",
+      "AI SDK",
+      "Codex",
+      "Agent harnesses",
+      "Tool calling",
+      "Model Context Protocol (MCP)",
+      "AI evaluations"
+    ]
+  },
+  {
+    "title": "Languages",
+    "icon": "code",
+    "skills": [
+      "TypeScript",
+      "JavaScript",
+      "Python",
+      "Swift",
+      "Kotlin",
+      "SQL",
+      "Shell scripting",
+      "Solidity"
+    ]
+  },
+  {
+    "title": "Backend",
+    "icon": "server",
+    "skills": [
+      "Node.js",
+      "REST APIs",
+      "WebSockets",
+      "OAuth",
+      "Bun",
+      "Better Auth",
+      "Zod",
+      "Sharp",
+      "Express",
+      "Ethereum",
+      "Web3.js"
+    ]
+  },
+  {
+    "title": "Frontend",
+    "icon": "layers",
+    "skills": [
+      "React",
+      "Next.js",
+      "React Native",
+      "Expo",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Electron",
+      "Three.js",
+      "React Three Fiber",
+      "Redux",
+      "React Router",
+      "jQuery"
+    ]
+  },
+  {
+    "title": "Data",
+    "icon": "database",
+    "skills": [
+      "PostgreSQL",
+      "Prisma",
+      "Supabase",
+      "Redis",
+      "NoSQL",
+      "Drizzle ORM",
+      "SQLite",
+      "IPFS"
+    ]
+  },
+  {
+    "title": "DevOps",
+    "icon": "workflow",
+    "skills": [
+      "Docker",
+      "Docker Compose",
+      "Linux",
+      "CI/CD",
+      "GitHub Actions",
+      "Git",
+      "Vercel",
+      "Vercel Sandbox",
+      "Vercel Workflow",
+      "Expo EAS",
+      "AWS Lambda",
+      "Amazon EC2",
+      "AWS Elastic Beanstalk",
+      "Chef",
+      "Webpack"
+    ]
+  },
+  {
+    "title": "Testing",
+    "icon": "flask",
+    "skills": [
+      "End-to-end testing",
+      "Playwright",
+      "Jest",
+      "Mocha",
+      "Chai",
+      "Vitest",
+      "Node.js test runner",
+      "Bun test",
+      "Python unittest",
+      "Truffle",
+      "Ganache"
+    ]
+  }
 ]

@@ -29,18 +29,16 @@ def build_resume():
         }
         for job in experience
     ]
-    selected_skills = {
-        "Languages & UI": 7,
-        "Backend & APIs": 4,
-        "Data": 3,
-        "AI & integrations": 3,
-        "Cloud": 4,
-        "DevOps": 4,
+    skill_labels = {
+        "Large language models (LLMs)": "LLMs",
+        "Model Context Protocol (MCP)": "MCP",
     }
     skill_rows = [
-        {"label": group["title"], "details": ", ".join(group["skills"][:selected_skills[group["title"]]])}
+        {"label": group["title"], "details": ", ".join(
+            skill_labels.get(skill, skill)
+            for skill in group["skills"]
+        )}
         for group in skills
-        if group["title"] in selected_skills
     ]
 
     resume = {
@@ -63,13 +61,13 @@ def build_resume():
                     "with a focus on reliable, efficient model usage."
                 ],
                 "experience": roles,
+                "Skills": skill_rows,
                 "projects": [
                     {
                         "name": "[Freecoda](https://freecoda.com) · [GitHub](https://github.com/elliotshohet/freecoda)",
                         "summary": "Open-source AI agent for conversations and project work across web, desktop, and terminal; public desktop beta with invite-only hosted AI. Designed and built the shared TypeScript agent, CLI, Electron app, and Next.js service. Added trusted-folder review, separate edit and command approvals, conversation sync, and PostgreSQL usage accounting.",
                     }
                 ],
-                "technical skills": skill_rows,
                 "education": [
                     {
                         "institution": "University of California, Davis",
@@ -82,13 +80,67 @@ def build_resume():
         },
         "design": {
             "theme": "engineeringclassic",
-            "page": {"size": "us-letter", "top_margin": "0.55in", "bottom_margin": "0.55in", "left_margin": "0.62in", "right_margin": "0.62in", "show_footer": False, "show_top_note": False},
-            "colors": {"name": "#176f70", "headline": "#163f46", "connections": "#176f70", "section_titles": "#176f70", "links": "#176f70"},
-            "typography": {"line_spacing": "0.72em", "font_family": {"body": "Source Sans 3", "name": "Source Sans 3", "headline": "Source Sans 3", "connections": "Source Sans 3", "section_titles": "Source Sans 3"}, "font_size": {"body": "10pt", "name": "30pt", "headline": "11pt", "connections": "9pt", "section_titles": "11pt"}},
-            "header": {"space_below_name": "0.18cm", "space_below_headline": "0.20cm", "space_below_connections": "0.36cm", "connections": {"show_icons": True, "display_urls_instead_of_usernames": False, "space_between_connections": "0.28cm"}},
-            "section_titles": {"space_above": "0.36cm", "space_below": "0.18cm"},
-            "sections": {"space_between_regular_entries": "0.62em", "space_between_text_based_entries": "0.20em"},
-            "entries": {"highlights": {"space_above": "0.09cm", "space_between_items": "0.07cm"}},
+            "page": {
+                "size": "us-letter",
+                "top_margin": "0.50in",
+                "bottom_margin": "0.50in",
+                "left_margin": "0.64in",
+                "right_margin": "0.64in",
+                "show_footer": False,
+                "show_top_note": False,
+            },
+            "colors": {
+                "body": "#293833",
+                "name": "#173934",
+                "headline": "#52645f",
+                "connections": "#52645f",
+                "section_titles": "#173934",
+                "links": "#176e5c",
+            },
+            "typography": {
+                "alignment": "left",
+                "line_spacing": "0.56em",
+                "font_family": "Lato",
+                "font_size": {
+                    "body": "10pt",
+                    "name": "28pt",
+                    "headline": "11pt",
+                    "connections": "8.5pt",
+                    "section_titles": "10.5pt",
+                },
+                "bold": {"name": True, "section_titles": True},
+            },
+            "header": {
+                "alignment": "left",
+                "space_below_name": "0.20cm",
+                "space_below_headline": "0.24cm",
+                "space_below_connections": "0.40cm",
+                "connections": {
+                    "show_icons": True,
+                    "display_urls_instead_of_usernames": False,
+                    "space_between_connections": "0.30cm",
+                },
+            },
+            "section_titles": {
+                "type": "with_partial_line",
+                "line_thickness": "0.35pt",
+                "space_above": "0.32cm",
+                "space_below": "0.20cm",
+            },
+            "sections": {
+                "space_between_regular_entries": "0.75em",
+                "space_between_text_based_entries": "0.16em",
+            },
+            "entries": {
+                "side_space": "0cm",
+                "highlights": {"space_above": "0.12cm", "space_between_items": "0.08cm"},
+            },
+            "templates": {
+                "experience_entry": {
+                    "main_column": "**COMPANY** | POSITION\nSUMMARY\nHIGHLIGHTS",
+                    "date_and_location_column": "DATE",
+                },
+            },
         },
         "settings": {
             "render_command": {"output_folder": "rendercv_output", "dont_generate_markdown": True, "dont_generate_html": True, "dont_generate_png": True},

@@ -1,35 +1,51 @@
-# Elliot Shohet personal site
+# Elliot Shohet portfolio
 
-Minimal Next.js App Router site for https://elliotshohet.com.
+Personal portfolio at https://elliotshohet.com, built with Next.js App Router, React, TypeScript, Tailwind CSS, and local shadcn/ui components.
 
-Run npm ci, then npm run dev for local development. Validate with npm run lint and npm run build.
+## Local development
 
-Content: app/page.tsx. Styling: app/globals.css. Metadata: app/layout.tsx.
+```sh
+npm ci
+npm run dev
+```
 
-Vercel hosts the site with automatic production deployments from main.
+Open the local URL printed by Next.js (normally http://localhost:3000). No environment variables are required for local development.
 
-## Hosting
+```sh
+npm run lint
+npx tsc --noEmit
+npm run build
+```
 
-- Production: https://elliotshohet.com
-- Alternate domain: https://www.elliotshohet.com
-- GitHub: https://github.com/elliotshohet/website (public)
-- Vercel project: elliotshohet-site in eshohets-projects
-- Production branch: main
+`npm run start` serves a completed production build. Next.js conventions for this installed version are documented in `node_modules/next/dist/docs/`; read the relevant guide before changing framework code, as described in `AGENTS.md`.
 
-DNS is managed at Spaceship. The apex uses an A record pointing to 216.198.79.1, and www uses a CNAME pointing to e2f139e9a93faaf0.vercel-dns-017.com. Vercel manages HTTPS certificates automatically.
+## Routes and files
 
-No environment variables are needed to run the site. Local Vercel metadata and environment files are ignored by Git.
+- `app/page.tsx`: homepage introduction, Work, Skills, and Projects sections.
+- `app/site-header.tsx` and `app/site-footer.tsx`: shared navigation and simple contact/social/résumé footer. Contact is the homepage `/#contact` anchor.
+- `app/work/[slug]/page.tsx`: employment case studies and repository project pages, including `/work/i2chain`. Routes come from `allProjects` in `lib/projects.ts`.
+- `app/contact/page.tsx`: redirects legacy `/contact` visits to `/#contact`.
+- `app/globals.css`, `app/motion.css`, and `app/theme.tsx`: styling, motion, and light/dark themes.
+- `app/layout.tsx`, `app/sitemap.ts`, `app/robots.ts`, and `app/opengraph-image.tsx`: site metadata and discovery.
+- `components/ui/`: local shadcn/ui components; `app/ui-icon.tsx` provides shared icons.
+- `public/`: static assets, including company logos, project previews, the headshot, and the downloadable résumé. Files are served from the site root.
 
-## Website and résumé content
+## Shared content
 
-The site targets full-stack roles with an emphasis on AI product engineering.
+Keep website and résumé changes aligned through the canonical sources:
 
-- `lib/skills.json` is the complete shared source for website and résumé skills.
-- `lib/experience.json` contains résumé bullets and the role titles and dates shared with the website's employment case studies.
-- `lib/projects.ts` contains employment case studies; the GitHub project files contain dated repository demonstrations and historical prototypes.
-- `scripts/build_resume.py` generates the searchable, one-page PDF served at `/elliot-shohet-resume.pdf`. Run it with Python and ReportLab installed, then render and inspect the result after content changes.
+| Source | Purpose |
+| --- | --- |
+| `lib/experience.json` | Employment titles, dates, and résumé bullets; case studies reuse titles and dates. |
+| `lib/skills.json` | Skills shared by the website and résumé. |
+| `lib/projects.ts` | Employment case studies and the combined project collections. |
+| `lib/github-projects.ts` | Personal/repository project content, including Freecoda. |
+| `lib/blockchain-projects.ts` | Earlier blockchain repository demonstrations and prototypes. |
+| `scripts/build_resume.py` | Résumé layout, profile, selected experience bullets, and skill display labels. |
 
-To regenerate the résumé:
+## Generate the résumé
+
+The generator uses RenderCV and pypdf, pinned in `scripts/requirements-resume.txt`:
 
 ```sh
 python3 -m venv .venv
@@ -37,6 +53,8 @@ python3 -m venv .venv
 .venv/bin/python scripts/build_resume.py
 ```
 
-The generator rejects content that exceeds one page before replacing the existing PDF. Render and inspect the generated file to confirm readability and text fit.
+It reads the shared experience and skill data, renders in a temporary directory, and writes `public/elliot-shohet-resume.pdf`. The script checks that the rendered PDF has exactly one page before replacing the existing file. After changing content or layout, render the PDF to an image and inspect readability, spacing, and text fit; the page-count check alone does not verify visual quality.
 
-The public site does not show compensation targets or recruiting notes. Local edits require a separate deployment to reach elliotshohet.com.
+## Publishing
+
+Local edits and résumé generation change this checkout only. Review the diff and run the checks above before publishing through the configured hosting workflow. Do not assume a local build has updated the public site.

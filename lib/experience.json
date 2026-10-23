@@ -5,11 +5,16 @@
     "role": "Full-stack Engineer",
     "period": "Oct 2022 - Present",
     "bullets": [
-      "Own full-stack engineering for a mobile and web health product using React Native/Expo, Next.js, and PostgreSQL/Prisma in a shared TypeScript codebase.",
-      "Built streaming OpenAI coaching with LLM tool calling for meals, exercise, weight, and goals; used conversation locks and saved tool results to guard against overlapping replies and duplicate writes.",
-      "Integrated Google Health data and exposed health tools to ChatGPT through an OAuth-protected MCP server with scoped access and encrypted tokens.",
-      "Implemented native Google sign-in in Swift and Kotlin and direct App Store / Google Play subscription verification, checking purchase ownership, product, status, and environment.",
-      "Standardized database migrations, web/mobile development, and Android builds with Docker Compose; added release preflight checks and regression coverage for authentication, billing, and coaching."
+      "Built React Native/Expo and Next.js health workflows for meals, exercise, weight, and analytics on shared TypeScript services and PostgreSQL/Prisma records.",
+      "Implemented streaming AI coaching with saved conversation history, shared data tools, and durable retry safeguards against duplicate or interrupted record changes.",
+      "Exposed account-scoped Burn data and AI actions through OAuth-protected MCP for ChatGPT, with explicit write/history consent and revocation; integrated Google Health data.",
+      "Unified web and mobile authentication with Better Auth; built native Google sign-in and server-side Apple App Store and Google Play subscription verification.",
+      "Built Docker Compose and Android development workflows, release preflight safeguards, and regression coverage for authorization, billing, health data, and coaching retries."
+    ],
+    "siteHighlights": [
+      "Mobile and web health workflows on shared TypeScript services",
+      "Streaming coaching with saved history and retry safeguards",
+      "Shared sign-in and consent-based ChatGPT tools"
     ]
   },
   {

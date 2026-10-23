@@ -2,7 +2,7 @@ import type { SVGProps } from "react";
 import {
   ArrowDown, ArrowLeft, ArrowRight, ArrowUp, ArrowUpRight, BriefcaseBusiness,
   CalendarDays, Check, Cloud, CodeXml, Copy, Database, Download, ExternalLink,
-  FlaskConical, Globe, GraduationCap, Layers, Mail, MapPin,
+  FileText, FlaskConical, Globe, GraduationCap, Layers, Mail, MapPin,
   Moon, Music, Server, Smartphone, Sparkles, Sun, User, Workflow,
 } from "lucide-react";
 
@@ -24,7 +24,7 @@ const icons = {
   diagonal: ArrowUpRight, database: Database, cloud: Cloud, server: Server,
   flask: FlaskConical, github: GitHubLogo, calendar: CalendarDays,
   education: GraduationCap, check: Check, copy: Copy, linkedin: LinkedInLogo,
-  workflow: Workflow,
+  workflow: Workflow, resume: FileText,
 };
 export type IconName = keyof typeof icons;
 

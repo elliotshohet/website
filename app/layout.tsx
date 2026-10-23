@@ -19,7 +19,7 @@ const displayFont = Space_Grotesk({
 });
 const title = "Elliot Shohet | Full-stack Engineer · AI Products";
 const description =
-  "Full-stack engineer building mobile, web, and AI coaching at Burn. TypeScript, React, Next.js, PostgreSQL, and LLM tools. Remote US or Los Angeles hybrid.";
+  "Full-stack engineer building mobile, web, and AI coaching at Burn. TypeScript, React, Next.js, PostgreSQL, and LLM tools.";
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#f5f8f7" },
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   applicationName: "Elliot Shohet",
   authors: [{ name: "Elliot Shohet", url: "https://elliotshohet.com" }],
   alternates: { canonical: "/" },
-  robots: { index: true, follow: true },
+  robots: { "max-image-preview": "large" },
   openGraph: {
     title,
     description,
@@ -68,6 +68,24 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className={`${bodyFont.variable} ${displayFont.variable}`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "@id": "https://elliotshohet.com/#website",
+            url: "https://elliotshohet.com",
+            name: "Elliot Shohet",
+            description,
+            inLanguage: "en",
+            author: {
+              "@type": "Person",
+              "@id": "https://elliotshohet.com/#person",
+              name: "Elliot Shohet",
+              url: "https://elliotshohet.com",
+            },
+          }).replace(/</g, "\\u003c") }}
+        />
         <SiteTheme>
           <a className="skip-link" href="#main">
             Skip to content

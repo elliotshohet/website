@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { ThemeToggle } from "./theme";
-import { Button } from "@/components/ui/button";
 
 export function SiteHeader() {
   return (
@@ -34,8 +33,8 @@ export function SiteHeader() {
       </Link>
       <nav aria-label="Main navigation">
         <Link href="/#work">Work</Link>
-        <Link href="/#projects">Projects</Link>
         <Link href="/#skills">Skills</Link>
+        <Link href="/#projects">Projects</Link>
         <a
           href="/elliot-shohet-resume.pdf"
           data-track="resume_download"
@@ -45,9 +44,6 @@ export function SiteHeader() {
         >
           Résumé
         </a>
-        <Button asChild variant="outline" className="nav-contact h-auto">
-          <Link href="/contact">Let’s talk</Link>
-        </Button>
         <ThemeToggle />
       </nav>
     </header>

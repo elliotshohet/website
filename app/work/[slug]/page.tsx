@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { SkillBadge } from "@/components/skill-badge";
 import type { Metadata } from "next";
-import { Icon } from "../../ui-icon";
+import { Icon, type IconName } from "../../ui-icon";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -12,7 +12,21 @@ import {
   getProject,
 } from "../../../lib/projects";
 import { SiteHeader } from "../../site-header";
+import { SiteFooter } from "../../site-footer";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+
+function flowIcon(step: string): IconName {
+  if (/record|database|postgres|storage/i.test(step)) return "database";
+  if (/auth|identity|consent|permission/i.test(step)) return "user";
+  if (/release|deploy|deliver|production|cluster/i.test(step)) return "workflow";
+  if (/verify|verification|review|result/i.test(step)) return "check";
+  if (/AI|coach|agent|model/i.test(step)) return "spark";
+  if (/API|backend|service|infrastructure/i.test(step)) return "server";
+  if (/mobile|desktop|client/i.test(step)) return "phone";
+  return "code";
+}
+
 type Props = { params: Promise<{ slug: string }> };
 export function generateStaticParams() {
   return allProjects.map(({ slug }) => ({ slug }));
@@ -23,7 +37,13 @@ export const dynamicParams = true;
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = getProject((await params).slug);
   if (!project) notFound();
-  const title = `${project.name} — ${project.repository ? "GitHub Project" : "Engineering Case Study"} | Elliot Shohet`;
+  const title = `${project.name}: ${project.title} | Elliot Shohet`;
+  const image = {
+    url: `/work/${project.slug}/opengraph-image/social`,
+    width: 1200,
+    height: 630,
+    alt: `${project.name} — ${project.title}. Engineering by Elliot Shohet.`,
+  };
   return {
     title,
     description: project.description,
@@ -35,14 +55,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       siteName: "Elliot Shohet",
       locale: "en_US",
+      images: [image],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description: project.description,
-      images: [
-        { url: "/opengraph-image", alt: "Elliot Shohet — Full-stack Engineer" },
-      ],
+      images: [image],
     },
   };
 }
@@ -56,6 +75,28 @@ export default async function Project({ params }: Props) {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "WebPage",
+        "@id": projectUrl,
+        url: projectUrl,
+        name: `${project.name}: ${project.title}`,
+        description: project.description,
+        inLanguage: "en",
+        isPartOf: { "@id": "https://elliotshohet.com/#website" },
+        mainEntity: { "@id": `${projectUrl}#project` },
+        author: {
+          "@type": "Person",
+          "@id": "https://elliotshohet.com/#person",
+          name: "Elliot Shohet",
+          url: "https://elliotshohet.com",
+        },
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          url: `${projectUrl}/opengraph-image/social`,
+          width: 1200,
+          height: 630,
+        },
+      },
+      {
         "@type": project.repository ? "SoftwareSourceCode" : "CreativeWork",
         "@id": `${projectUrl}#project`,
         name: project.name,
@@ -64,6 +105,7 @@ export default async function Project({ params }: Props) {
         url: projectUrl,
         inLanguage: "en",
         keywords: project.tags,
+        mainEntityOfPage: { "@id": projectUrl },
         ...(project.repository
           ? { codeRepository: project.repository }
           : {
@@ -127,17 +169,6 @@ export default async function Project({ params }: Props) {
           <span aria-current="page">{project.name}</span>
         </nav>
         <header className="case-masthead">
-          <div className="case-masthead-top">
-            <p className="eyebrow">
-              <Icon name={project.repository ? "github" : "briefcase"} />
-              {project.repository
-                ? "Repository project"
-                : "Engineering case study"}
-            </p>
-            <Badge variant="outline" className="case-project-name">
-              {project.name}
-            </Badge>
-          </div>
           <h1>{project.title}</h1>
           <p className="case-deck">{project.subtitle}</p>
           {project.milestone && (
@@ -174,33 +205,27 @@ export default async function Project({ params }: Props) {
             </ul>
             <div className="case-source-actions">
               {project.repository && (
-                <a
-                  className="button primary"
-                  href={project.repository}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Icon name="github" />
-                  View source
-                  <Icon name="external" />
-                </a>
+                <Button asChild variant="outline" size="sm">
+                  <a href={project.repository} target="_blank" rel="noopener noreferrer">
+                    <Icon name="github" data-icon="inline-start" />
+                    View source
+                  </a>
+                </Button>
               )}
               {project.website && (
-                <a
-                  className="button primary"
-                  href={project.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Icon name="globe" />
-                  Visit {project.name}
-                  <Icon name="external" />
-                </a>
+                <Button asChild size="sm">
+                  <a href={project.website} target="_blank" rel="noopener noreferrer">
+                    <Icon name="globe" data-icon="inline-start" />
+                    Visit {project.name}
+                  </a>
+                </Button>
               )}
-              <a className="case-read-link" href="#case-overview">
-                Explore the details
-                <Icon name="down" />
-              </a>
+              <Button asChild variant="outline" size="sm">
+                <a href="#case-overview">
+                  <Icon name="code" data-icon="inline-start" />
+                  Explore details
+                </a>
+              </Button>
             </div>
           </div>
         </header>
@@ -318,8 +343,8 @@ export default async function Project({ params }: Props) {
           <ol>
             {project.flow.map((step, index) => (
             <li key={step}>
-                <span className="case-step-number">
-                  {String(index + 1).padStart(2, "0")}
+                <span className="case-step-icon">
+                  <Icon name={flowIcon(step)} />
                 </span>
                 <p>{step}</p>
                 {index < project.flow.length - 1 && <Icon name="arrow" />}
@@ -327,23 +352,7 @@ export default async function Project({ params }: Props) {
             ))}
           </ol>
         </section>
-        <section className="case-closing">
-          <div>
-            <p className="eyebrow">Hiring a full-stack engineer?</p>
-            <h2>Let’s talk engineering.</h2>
-            <p>
-              AI tools, mobile and web products, and the services behind them.
-              Remote US or Los Angeles hybrid.
-            </p>
-            <a
-              className="button primary"
-              href="mailto:elliot.shohet@gmail.com"
-              data-track="email_click"
-            >
-              <Icon name="mail" />
-              Email Elliot
-            </a>
-          </div>
+        <section className="case-closing" aria-label="Related work">
           <Link
             className="case-next-project"
             href={`/work/${nextProject.slug}`}
@@ -358,22 +367,7 @@ export default async function Project({ params }: Props) {
           </Link>
         </section>
       </main>
-      <footer>
-        <Link href={project.repository ? "/#projects" : "/#work"}>
-          <Icon name="left" />
-          {project.repository ? "All projects" : "All work"}
-        </Link>
-        <a
-          href="/elliot-shohet-resume.pdf"
-          data-track="resume_download"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Download résumé PDF (opens in a new tab)"
-        >
-          <Icon name="download" />
-          Download résumé
-        </a>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

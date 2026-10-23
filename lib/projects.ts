@@ -5,7 +5,7 @@ import experience from "./experience.json";
 function employment(slug: string) {
   const job = experience.find(item => item.slug === slug);
   if (!job) throw new Error(`Missing employment content: ${slug}`);
-  return { role: job.role, period: job.period.replace(" - ", " — ") };
+  return { role: job.role, period: job.period.replace(" - ", " — "), highlights: job.siteHighlights };
 }
 
 export type Project = {
@@ -21,6 +21,7 @@ export type Project = {
   period: string;
   tags: string[];
   summary: string;
+  highlights?: string[];
   contribution: string;
   sections: { heading: string; text: string }[];
   outcome: string;
@@ -34,9 +35,9 @@ export const workProjects: Project[] = [
     "slug": "burn",
     "name": "Burn",
     "website": "https://burncal.ai",
-    "title": "Building AI coaching into a full-stack health product",
-    "subtitle": "Meal logging, connected health data, and coaching across mobile and web.",
-    "description": "Elliot Shohet’s work at Burn: React Native and Next.js product engineering, OpenAI tool calling, Google Health, native sign-in, and subscriptions verified by Apple and Google.",
+    "title": "Building a health product across mobile, web, and AI agents",
+    "subtitle": "Shared health records, streaming coaching, and consent-based tools for ChatGPT.",
+    "description": "Elliot Shohet’s engineering work at Burn: React Native and Next.js interfaces, streaming AI coaching, owner-scoped MCP tools, Google Health, shared authentication, and store subscription verification.",
     ...employment("burn"),
     "tags": [
       "TypeScript",
@@ -46,41 +47,45 @@ export const workProjects: Project[] = [
       "OpenAI / MCP",
       "Docker Compose"
     ],
-    "summary": "Burn brings meal logging, nutrition tracking, connected health data, and AI coaching into mobile and web workflows. I own engineering across the React Native/Expo app, Next.js services, PostgreSQL/Prisma data layer, and the integrations that connect them.",
-    "contribution": "Own implementation across the mobile app, web dashboard, APIs, AI integrations, authentication, subscriptions, and developer workflows.",
+    "summary": "I built Burn’s React Native/Expo app and Next.js health workspace on shared TypeScript services and PostgreSQL/Prisma records. My work includes meal and health-data workflows, streaming coaching, unified web/mobile sign-in, and OAuth-protected ChatGPT tools with account-scoped access and explicit consent.",
+    "contribution": "I implement the interfaces and the services behind them: shared authentication, health-data integrations, coaching tools, subscription checks, and development workflows.",
     "sections": [
       {
-        "heading": "One product across mobile and web",
-        "text": "The React Native/Expo app and Next.js services share TypeScript types in a Bun monorepo, with PostgreSQL and Prisma handling persistent data. My work spans meal-photo analysis, nutrition calculations, the web dashboard, and conversational coaching. Shared contracts keep the app and backend aligned as these workflows evolve."
+        "heading": "Mobile and web around the same records",
+        "text": "I built meal, weight, exercise, and coaching workflows across Expo and Next.js, sharing TypeScript contracts in a Bun monorepo. The web Meals screen supports manual and AI-description logging, saved meals, nutrition editing, and reuse. Ask Burn adds saved conversations, older-history paging, streaming replies, and action feedback through an adapter to the existing coaching service."
       },
       {
-        "heading": "AI actions that account for retries",
-        "text": "The coach can manage meals, exercise, weight, and goals through tools. I built streaming replies and persistent conversation history, then added transactional conversation locks, rate limits, and recorded tool results to guard against overlapping replies and repeated writes when requests are retried. Token usage and estimated model costs are recorded so usage can be inspected."
+        "heading": "Coaching that accounts for interrupted actions",
+        "text": "I made the coach use the same validated, owner-scoped operations as MCP instead of maintaining a second set of data tools. PostgreSQL conversation locks, expiring leases, request IDs, and durable action reservations guard overlapping replies and duplicate mutations. An interrupted reservation is not blindly rerun; retries can inspect recorded outcomes. I also record token usage and estimated model costs."
       },
       {
-        "heading": "Health data with explicit access boundaries",
-        "text": "Integrated Google Health data for the categories a user authorizes, including activity, sleep, and nutrition. Separate dashboard and agent OAuth flows support scoped consent and encrypted token storage. Independent metric requests run concurrently with explicit timeouts; available results remain usable when another provider request fails."
+        "heading": "A consent-based ChatGPT connection",
+        "text": "I built OAuth and MCP access for native Burn records and separately authorized Google Health data. The authenticated owner is resolved server-side; tools cannot choose a user ID. Writes require permission in both the token and active consent, while conversation and assessment history need an additional grant. Grant-version checks revoke access even before an issued token expires. Regression tests exercise scope checks and cross-account isolation."
       },
       {
-        "heading": "Identity and subscriptions across platforms",
-        "text": "Built native Google sign-in bridges in Swift and Kotlin using the platform SDKs, with server-side identity verification. Replaced a RevenueCat integration with direct Apple App Store and Google Play subscription verification. Backend checks bind purchases to accounts and validate product, subscription status, and store environment before granting access."
+        "heading": "Health analytics with visible data limits",
+        "text": "I integrated Google Health activity, sleep, nutrition, and other authorized categories with separate dashboard and agent connections and encrypted token storage. Overview queries run independent metrics concurrently and distinguish missing permissions, missing data, provider failures, and incomplete pagination. Total-calorie queries are split into bounded date windows; an unfinished page sequence is not presented as a complete daily total."
       },
       {
-        "heading": "Bounded image processing",
-        "text": "Meal photos are normalized with Sharp: auto-orientation, resizing to a 1,536-pixel maximum edge, JPEG compression, and metadata removal. Upload-size and decoded-pixel limits bound the work accepted by the image pipeline. PostgreSQL indexes support the user and date-based lookups used in tracking workflows."
+        "heading": "Shared identity and verified entitlements",
+        "text": "I unified web and mobile sign-in around Better Auth sessions and canonical user records, with mobile credentials stored through Expo SecureStore. I also implemented native Google sign-in bridges using Swift and Kotlin and direct Apple and Google subscription verification. Server checks bind purchase proofs to accounts and validate products, expiry, and store environment before updating entitlements."
       },
       {
-        "heading": "Repeatable development and release checks",
-        "text": "Built Docker Compose workflows for PostgreSQL, migrations, Next.js, Expo/Metro, and Android builds. Release preflight checks and regression coverage exercise billing, authorization, health-data handling, coaching tools, and mobile navigation. The tooling covers the same boundaries that connect features across the product."
+        "heading": "Bounded photo processing",
+        "text": "I built a Sharp pipeline that validates upload bytes and decoded pixels, rejects invalid or multi-frame images, strips metadata, and resizes meal photos to a 1,536-pixel maximum edge before JPEG compression. MCP photo upload and AI analysis are separate explicit operations; the upload tool does not fetch arbitrary URLs or silently trigger analysis."
+      },
+      {
+        "heading": "Repeatable development and release safeguards",
+        "text": "I built Docker Compose workflows for PostgreSQL, migrations, Next.js, Expo/Metro, and Android builds. Release preflight checks reject local backend URLs and development billing bypasses in production builds. Regression suites cover authentication, purchase validation, health-data handling, and coaching retries; a separate PostgreSQL integration script checks two-owner CRUD isolation with synthetic users."
       }
     ],
-    "outcome": "Built streaming coaching, health-data access, native sign-in, and subscriptions verified by Apple and Google around shared user records.",
-    "flowHeading": "From user intent to a saved record",
+    "outcome": "Implemented mobile, web, and agent workflows around shared health records, with explicit consent, account isolation, and durable safeguards for AI-driven changes.",
+    "flowHeading": "From a request to an account-scoped action",
     "flow": [
-      "Mobile or web action",
-      "Authenticated API",
-      "AI tool or health service",
-      "PostgreSQL record"
+      "Mobile, web, or ChatGPT request",
+      "Identity and permission checks",
+      "Shared validated operation",
+      "Saved record and action outcome"
     ]
   },
   {
@@ -168,6 +173,25 @@ export const workProjects: Project[] = [
       "ERC20 settlement",
       "Automated delivery"
     ]
+  },
+  {
+    slug: "i2chain",
+    name: "i2Chain",
+    title: "Desktop software with identity-based access controls",
+    subtitle: "An Electron desktop app, Node.js access controls, and AWS services.",
+    description: "Elliot Shohet’s work at i2Chain: Electron, React, and Redux desktop software, Node.js identity-based access controls, AWS Lambda services, and production Ethereum infrastructure.",
+    ...employment("i2chain"),
+    tags: ["Electron", "React", "Redux", "Node.js", "AWS Lambda", "Ethereum"],
+    summary: "At i2Chain, I built Electron, React, and Redux desktop software and Node.js identity-based access controls. I also developed AWS Lambda services and operated a production geth node cluster.",
+    contribution: "Built across the desktop client, identity-based access controls, cloud services, and production Ethereum infrastructure.",
+    sections: [
+      { heading: "Desktop product engineering", text: "Built desktop software with Electron, React, and Redux, contributing the application interface and its supporting client implementation." },
+      { heading: "Identity-based access controls", text: "Developed Node.js identity-based access controls alongside the desktop software." },
+      { heading: "Cloud and production infrastructure", text: "Developed AWS Lambda services and operated a production geth node cluster, extending the engineering scope from the client to cloud services and Ethereum infrastructure." }
+    ],
+    outcome: "Delivered desktop software and identity-based access controls alongside AWS services and production Ethereum infrastructure.",
+    flowHeading: "The engineering scope",
+    flow: ["Electron desktop client", "Node.js access controls", "AWS Lambda services", "Production geth cluster"]
   }
 ];
 // Most recent repositories first; dates are documented in each project's history.

@@ -1,15 +1,17 @@
 import { SkillBadge } from "@/components/skill-badge";
-import { CopyEmailButton } from "./copy-email-button";
 import { Icon, type IconName } from "./ui-icon";
 import Link from "next/link";
 import Image from "next/image";
 import { SiteHeader } from "./site-header";
+import { SiteFooter } from "./site-footer";
 import { projects, workProjects } from "../lib/projects";
 import canonicalSkills from "../lib/skills.json";
 import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
+  CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -38,7 +40,7 @@ const profile = {
     url: "https://elliotshohet.com",
     jobTitle: "Full-stack Engineer",
     description:
-      "Full-stack engineer building health tracking and AI coaching at Burn, with experience in mobile, web, APIs, payment infrastructure, and small-team leadership. Open to remote US and Los Angeles hybrid roles.",
+      "Full-stack engineer building health tracking and AI coaching at Burn, with experience in mobile, web, APIs, payment infrastructure, and small-team leadership.",
     sameAs: [linkedin, github],
     email: "elliot.shohet@gmail.com",
     homeLocation: { "@type": "Place", name: "Los Angeles Metropolitan Area" },
@@ -74,7 +76,6 @@ export default function Home() {
         >
           <div className="intro-layout">
             <div>
-              <p className="intro-eyebrow"><span /> DESIGN MINDED ENGINEERING · LOS ANGELES</p>
               <h1 id="intro-heading">
                 Elliot
                 <br />
@@ -89,7 +90,7 @@ export default function Home() {
                 <Button asChild size="lg" className="button primary h-auto">
                   <a href="#work">
                     Explore my work
-                    <Icon name="down" data-icon="inline-end" />
+                    <Icon name="briefcase" data-icon="inline-end" />
                   </a>
                 </Button>
                 <Button
@@ -105,7 +106,7 @@ export default function Home() {
                     data-track="resume_download"
                   >
                     View résumé
-                    <Icon name="download" data-icon="inline-end" />
+                    <Icon name="resume" data-icon="inline-end" />
                   </a>
                 </Button>
               </div>
@@ -138,28 +139,24 @@ export default function Home() {
                 >
                   <Icon name="linkedin" />
                 </a>
-                <Link href="/contact" aria-label="Contact Elliot">
+                <a href="mailto:elliot.shohet@gmail.com" aria-label="Contact Elliot" data-track="email_click">
                   <Icon name="mail" />
-                </Link>
+                </a>
+              </div>
+              <div className="education-note">
+                <Image
+                  src="/companies/uc-davis.svg"
+                  alt="UC Davis"
+                  width={164}
+                  height={42}
+                  unoptimized
+                />
+                <p>
+                  B.S. Computer Science
+                  <span>University of California, Davis, 2012–2017</span>
+                </p>
               </div>
             </aside>
-          </div>
-          <div className="intro-bottom">
-            <p>
-              Currently building health tracking & AI coaching at{" "}
-              <a
-                href="https://burncal.ai"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Burn
-              </a>
-              .
-            </p>
-            <p>
-              <span className="availability-dot" />
-              Open to remote US & LA hybrid roles
-            </p>
           </div>
         </section>
         <section id="work" className="section" aria-labelledby="work-heading">
@@ -170,7 +167,7 @@ export default function Home() {
               across both.
             </p>
           </div>
-          <Card className="featured-work">
+          <Card className="featured-work case-card">
             <div className="featured-copy">
               <div className="work-topline">
                 <span className="company-wordmark">
@@ -179,26 +176,30 @@ export default function Home() {
                 </span>
                 <span>{burnProject.period}</span>
               </div>
+              <p className="work-role">{burnProject.role}</p>
               <h3>
-                Health tracking.
-                <br />
-                Meet AI coaching.
+                <Link href="/work/burn" className="card-case-link" data-track="project_open">
+                  Built health tracking and AI coaching across mobile and web.
+                </Link>
               </h3>
               <p>{burnProject.summary}</p>
               <ul className="feature-points">
-                <li>Mobile & web on a shared TypeScript stack</li>
-                <li>Streaming AI with tools that act on health records</li>
-                <li>Native sign-in, subscriptions & connected health data</li>
+                {burnProject.highlights?.map((highlight) => <li key={highlight}>{highlight}</li>)}
               </ul>
-              <Link
-                className="button primary"
-                href="/work/burn"
-                data-track="project_open"
-              >
-                Inside the project
-                <Icon name="diagonal" />
-              </Link>
-              <p className="featured-role">{burnProject.role}</p>
+              <div className="actions work-project-actions">
+                <Button asChild size="sm">
+                  <a href={burnProject.website} target="_blank" rel="noopener noreferrer">
+                    <Icon name="globe" data-icon="inline-start" />
+                    Visit Burn
+                  </a>
+                </Button>
+                <Button asChild variant="outline" size="sm">
+                  <Link href="/work/burn" data-track="project_open">
+                    <Icon name="diagonal" data-icon="inline-start" />
+                    Inside the project
+                  </Link>
+                </Button>
+              </div>
             </div>
             <figure className="product-stage">
               <Image
@@ -213,17 +214,18 @@ export default function Home() {
           </Card>
           <div className="past-work">
             {workProjects.filter((project) => project.slug !== "burn").map((job) => (
-              <Card className="past-work-row" key={job.slug}>
+              <Card className="past-work-row case-card" key={job.slug}>
                 <div>
                   {companyLogos[job.slug] && (
                     <Image
                       className={`work-company-logo work-company-logo-${job.slug}`}
                       {...companyLogos[job.slug]}
-                      alt=""
+                      alt={job.name}
                       unoptimized
                     />
                   )}
-                  <h3>{job.name}</h3>
+                  <h3 className={companyLogos[job.slug] ? "sr-only" : undefined}>{job.name}</h3>
+                  <p className="work-role">{job.role}</p>
                   <span>{job.period}</span>
                 </div>
                 <div>
@@ -236,7 +238,8 @@ export default function Home() {
                     )}
                     <Link
                       href={`/work/${job.slug}`}
-                      className="text-link"
+                      aria-label={`Read ${job.name} case study`}
+                      className="text-link card-case-link"
                       data-track="project_open"
                     >
                       Read case study
@@ -247,23 +250,39 @@ export default function Home() {
               </Card>
             ))}
           </div>
-          <Card className="career-note">
-            <Icon name="briefcase" />
-            <p>
-              Previously at i2Chain, building desktop software, access controls,
-              and AWS services.
-            </p>
-            <a
-              className="text-link"
-              href="/elliot-shohet-resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-track="resume_download"
-            >
-              Full résumé
-              <Icon name="download" />
-            </a>
-          </Card>
+
+        </section>
+        <section
+          id="skills"
+          className="section"
+          aria-labelledby="skills-heading"
+        >
+          <div className="section-heading">
+            <h2 id="skills-heading">Skills</h2>
+            <p>Tools I’ve used to build, test, and ship software.</p>
+          </div>
+          <div className="skills-grid">
+            {skillGroups.map((group) => (
+              <Card className="skill-group" key={group.title}>
+                <CardHeader className="skill-card-header">
+                  <CardTitle>
+                    <Icon name={group.icon} />
+                    {group.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="skill-card-content">
+                  <ul className="tags">
+                    {group.skills.map((skill) => (
+                      <li key={skill}>
+                        <SkillBadge skill={skill} />
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
         </section>
         <section
           id="projects"
@@ -280,13 +299,13 @@ export default function Home() {
             {projects
               .filter((p) => p.slug === "freecoda")
               .map((project) => (
-                <Card className="featured-repo" key={project.slug}>
+                <Card className="featured-repo case-card" key={project.slug}>
                   <div className="repo-title">
                     <Image src="/projects/freecoda-mark.svg" alt="" width={36} height={36} unoptimized />
                     <span>{project.name}</span>
                     <span className="repo-period">{project.period}</span>
                   </div>
-                  <h3>{project.title}</h3>
+                  <h3><Link href={`/work/${project.slug}`} className="card-case-link" data-track="project_open">{project.title}</Link></h3>
                   <p>{project.summary}</p>
                   <ul className="feature-points">
                     <li>Desktop, web, and terminal clients</li>
@@ -301,184 +320,81 @@ export default function Home() {
                     ))}
                   </ul>
                   <div className="actions">
+                    <Button asChild>
                     <a
                       href={project.website}
-                      className="button primary"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
+                      <Icon name="external" data-icon="inline-start" />
                       Visit Freecoda
-                      <Icon name="external" />
                     </a>
+                    </Button>
+                    <Button asChild variant="outline">
                     <a
                       href={project.repository}
-                      className="text-link"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      View on GitHub
-                      <Icon name="external" />
+                      <Icon name="github" data-icon="inline-start" />
+                      GitHub
                     </a>
+                    </Button>
+                    <Button asChild variant="outline">
                     <Link
                       href={`/work/${project.slug}`}
-                      className="text-link"
                       data-track="project_open"
                     >
-                      Inside Freecoda
-                      <Icon name="diagonal" />
+                      <Icon name="diagonal" data-icon="inline-start" />
+                      Read case study
                     </Link>
+                    </Button>
                   </div>
-                  <figure className="freecoda-preview">
-                    <Image
-                      src="/projects/freecoda-desktop-preview.webp"
-                      alt="Freecoda desktop interface preview showing the conversation workspace"
-                      width={1480}
-                      height={950}
-                      sizes="(max-width: 800px) 100vw, 560px"
-                    />
-                    <figcaption>Freecoda desktop interface preview</figcaption>
-                  </figure>
                 </Card>
               ))}
-            <Card className="repo-archive">
-              <h3>From the archive</h3>
+            <div className="repo-archive">
               {projects
                 .filter((p) => p.slug !== "freecoda")
                 .map((project) => (
-                  <Card key={project.slug}>
-                    <Link
-                      href={`/work/${project.slug}`}
-                      data-track="project_open"
-                    >
-                      <h4>{project.name}</h4>
-                      <Icon name="diagonal" />
-                    </Link>
-                    <p>{project.description}</p>
-                    <a
-                      href={project.repository}
-                      className="text-link"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Source code
-                      <Icon name="github" />
-                    </a>
+                  <Card key={project.slug} className="repo-archive-item case-card">
+                    <CardHeader>
+                      <CardTitle>
+                        <Link
+                          href={`/work/${project.slug}`}
+                          className="card-case-link"
+                          data-track="project_open"
+                        >
+                          <h4>{project.name}</h4>
+                          <Icon name="diagonal" />
+                        </Link>
+                      </CardTitle>
+                      <CardDescription className="repo-archive-period">
+                        {project.period}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <p>{project.description}</p>
+                    </CardContent>
+                    <CardFooter>
+                      <a
+                        href={project.repository}
+                        className="text-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Source code
+                        <Icon name="github" />
+                      </a>
+                    </CardFooter>
                   </Card>
                 ))}
-            </Card>
-          </div>
-        </section>
-        <section
-          id="skills"
-          className="section"
-          aria-labelledby="skills-heading"
-        >
-          <div className="section-heading">
-            <h2 id="skills-heading">My working toolkit.</h2>
-            <p>TypeScript at the center. The right tools around it.</p>
-          </div>
-          <div className="skills-grid">
-            {skillGroups.map((group) => (
-              <Card className="skill-group" key={group.title}>
-                <CardHeader className="skill-card-header">
-                  <CardTitle>{group.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="skill-card-content">
-                  <ul className="tags">
-                    {group.skills.map((skill) => (
-                      <li key={skill}>
-                        <SkillBadge skill={skill} />
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          <div className="education-note">
-            <Image
-              className="logo-light"
-              src="/companies/uc-davis-light.svg"
-              alt="UC Davis"
-              width={130}
-              height={45}
-              unoptimized
-            />
-            <Image
-              className="logo-dark"
-              src="/companies/uc-davis.svg"
-              alt="UC Davis"
-              width={130}
-              height={45}
-              unoptimized
-            />
-            <p>
-              B.S. Computer Science
-              <span>University of California, Davis, 2012–2017</span>
-            </p>
-          </div>
-        </section>
-        <section
-          id="contact"
-          className="contact section"
-          aria-labelledby="contact-heading"
-        >
-          <div>
-            <h2 id="contact-heading">
-              Something worth
-              <br />
-              building together?
-            </h2>
-            <p>
-              I’m looking for a role building useful AI products, with ownership
-              across interfaces, APIs, data, and delivery.
-            </p>
-            <a
-              className="contact-email"
-              href="mailto:elliot.shohet@gmail.com"
-              data-track="email_click"
-            >
-              elliot.shohet@gmail.com
-              <Icon name="diagonal" />
-            </a>
-            <div className="actions">
-              <CopyEmailButton className="button secondary">
-                <Icon name="copy" />
-                Copy email
-              </CopyEmailButton>
-              <Link href="/contact" className="text-link">
-                More ways to connect
-                <Icon name="diagonal" />
-              </Link>
             </div>
           </div>
-          <div className="contact-location">
-            <Icon name="globe" />
-            <p>
-              Based in Los Angeles.
-              <br /> Open to remote US
-              <br /> & local hybrid roles.
-            </p>
-          </div>
         </section>
+
+
       </main>
-      <footer>
-        <p>
-          Elliot Shohet<span>Full-stack engineer</span>
-        </p>
-        <div>
-          <a href={github} target="_blank" rel="me noopener noreferrer">
-            GitHub
-          </a>
-          <a href={linkedin} target="_blank" rel="me noopener noreferrer">
-            LinkedIn
-          </a>
-          <a href="#about">
-            Back to top
-            <Icon name="up" />
-          </a>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
