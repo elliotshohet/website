@@ -23,8 +23,8 @@ const description =
   "Full-stack engineer building mobile, web, and AI coaching at Burn. TypeScript, React, Next.js, PostgreSQL, and LLM tools.";
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f5f8f7" },
-    { media: "(prefers-color-scheme: dark)", color: "#112d34" },
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0e1c16" },
   ],
 };
 export const metadata: Metadata = {
@@ -68,7 +68,7 @@ export default function RootLayout({
       data-theme="light"
       suppressHydrationWarning
     >
-      <body className={`${bodyFont.variable} ${displayFont.variable}`}>
+      <body id="top" className={`${bodyFont.variable} ${displayFont.variable}`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify({

@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Cloned source references are not part of the website application.
+    ".artifacts/**",
   ]),
 ]);
 

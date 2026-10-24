@@ -10,7 +10,7 @@ function ThemeColor() {
     );
     tags.forEach((tag) => {
       tag.removeAttribute("media");
-      tag.content = resolvedTheme === "dark" ? "#112d34" : "#f5f8f7";
+      tag.content = resolvedTheme === "dark" ? "#0e1c16" : "#ffffff";
     });
   }, [resolvedTheme]);
   return null;

@@ -1,5 +1,5 @@
 import { githubProjects } from "./github-projects";
-import { blockchainProjects } from "./blockchain-projects";
+import { universityProjects } from "./university-projects";
 import experience from "./experience.json";
 
 function employment(slug: string) {
@@ -41,10 +41,18 @@ export const workProjects: Project[] = [
     ...employment("burn"),
     "tags": [
       "TypeScript",
-      "React Native / Expo",
+      "React Native",
+      "Expo",
       "Next.js",
-      "Prisma / PostgreSQL",
-      "OpenAI / MCP",
+      "React",
+      "PostgreSQL",
+      "Prisma",
+      "Bun",
+      "OpenAI",
+      "Model Context Protocol (MCP)",
+      "Better Auth",
+      "OAuth",
+      "Google Health",
       "Docker Compose"
     ],
     "summary": "I built Burn’s React Native/Expo app and Next.js health workspace on shared TypeScript services and PostgreSQL/Prisma records. My work includes meal and health-data workflows, streaming coaching, unified web/mobile sign-in, and OAuth-protected ChatGPT tools with account-scoped access and explicit consent.",
@@ -139,8 +147,8 @@ export const workProjects: Project[] = [
     "description": "Elliot Shohet’s work at Hypernet Labs: ERC20 settlement reaching 25 transactions per second, a modular SDK, CI/CD, and a small engineering team’s technical roadmap.",
     ...employment("hypernet"),
     "tags": [
+      "Ethereum",
       "ERC20",
-      "Payment settlement",
       "SDK development",
       "Dependency injection",
       "CI/CD"
@@ -194,10 +202,10 @@ export const workProjects: Project[] = [
     flow: ["Electron desktop client", "Node.js access controls", "AWS Lambda services", "Production geth cluster"]
   }
 ];
-// Most recent repositories first; dates are documented in each project's history.
-const repositoryOrder = ["pets-saas", "continuous-payments", "ethmailer", "chrono-token"];
-export const projects: Project[] = [...githubProjects, ...blockchainProjects].sort(
-  (left, right) => repositoryOrder.indexOf(left.slug) - repositoryOrder.indexOf(right.slug),
+// Keep the featured current projects before the restored university work.
+const projectOrder = ["freecoda", "pets-saas", "machine-learning-doodle-jump"];
+export const projects: Project[] = [...githubProjects, ...universityProjects].sort(
+  (left, right) => projectOrder.indexOf(left.slug) - projectOrder.indexOf(right.slug),
 );
 export const allProjects: Project[] = [...workProjects, ...projects];
 export function getProject(slug: string) { return allProjects.find(project => project.slug === slug); }
