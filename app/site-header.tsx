@@ -1,41 +1,25 @@
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./theme";
 
 export function SiteHeader() {
   return (
     <header className="site-header">
-      <Link
-        className="site-name"
-        href="/#about"
-        aria-label="Elliot Shohet home"
-      >
-        <svg
-          className="signature-mark"
-          viewBox="0 0 32 32"
-          fill="none"
-          aria-hidden="true"
-        >
-          <path
-            d="M8 7h16M8 16h12M8 25h16"
-            stroke="currentColor"
-            strokeWidth="3"
-            strokeLinecap="round"
-          />
-          <path
-            d="M25 7v9H8v9"
-            stroke="currentColor"
-            strokeWidth="3"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-        elliot shohet
-      </Link>
       <nav aria-label="Main navigation">
-        <Link href="/#work">Work</Link>
-        <Link href="/#skills">Skills</Link>
-        <Link href="/#projects">Projects</Link>
-        <a
+        <Button asChild variant="ghost" size="sm" className="px-1 sm:px-4">
+          <Link href="/#about">About</Link>
+        </Button>
+        <Button asChild variant="ghost" size="sm" className="px-1 sm:px-4">
+          <Link href="/#work">Work</Link>
+        </Button>
+        <Button asChild variant="ghost" size="sm" className="px-1 sm:px-4">
+          <Link href="/#skills">Skills</Link>
+        </Button>
+        <Button asChild variant="ghost" size="sm" className="px-1 sm:px-4">
+          <Link href="/#projects">Projects</Link>
+        </Button>
+        <Button asChild variant="ghost" size="sm" className="px-1 sm:px-4">
+          <a
           href="/elliot-shohet-resume.pdf"
           data-track="resume_download"
           target="_blank"
@@ -43,9 +27,10 @@ export function SiteHeader() {
           aria-label="Résumé PDF (opens in a new tab)"
         >
           Résumé
-        </a>
-        <ThemeToggle />
+          </a>
+        </Button>
       </nav>
+      <ThemeToggle />
     </header>
   );
 }

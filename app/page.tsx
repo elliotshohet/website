@@ -87,7 +87,7 @@ export default function Home() {
                 make them work.
               </p>
               <div className="actions">
-                <Button asChild size="lg" className="button primary h-auto">
+                <Button asChild size="lg">
                   <a href="#work">
                     Explore my work
                     <Icon name="briefcase" data-icon="inline-end" />
@@ -97,7 +97,6 @@ export default function Home() {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="button secondary h-auto"
                 >
                   <a
                     href="/elliot-shohet-resume.pdf"
@@ -145,6 +144,15 @@ export default function Home() {
               </div>
               <div className="education-note">
                 <Image
+                  className="logo-light"
+                  src="/companies/uc-davis-light.svg"
+                  alt="UC Davis"
+                  width={164}
+                  height={42}
+                  unoptimized
+                />
+                <Image
+                  className="logo-dark"
                   src="/companies/uc-davis.svg"
                   alt="UC Davis"
                   width={164}
@@ -162,10 +170,6 @@ export default function Home() {
         <section id="work" className="section" aria-labelledby="work-heading">
           <div className="section-heading">
             <h2 id="work-heading">Work, from end to end.</h2>
-            <p>
-              Interfaces people use. Infrastructure they depend on. Ownership
-              across both.
-            </p>
           </div>
           <Card className="featured-work case-card">
             <div className="featured-copy">
@@ -259,7 +263,6 @@ export default function Home() {
         >
           <div className="section-heading">
             <h2 id="skills-heading">Skills</h2>
-            <p>Tools I’ve used to build, test, and ship software.</p>
           </div>
           <div className="skills-grid">
             {skillGroups.map((group) => (
@@ -291,9 +294,6 @@ export default function Home() {
         >
           <div className="section-heading">
             <h2 id="projects-heading">Built to be explored.</h2>
-            <p>
-              Personal projects, working code, and a few earlier experiments.
-            </p>
           </div>
           <div className="repo-layout">
             {projects
@@ -303,7 +303,7 @@ export default function Home() {
                   <div className="repo-title">
                     <Image src="/projects/freecoda-mark.svg" alt="" width={36} height={36} unoptimized />
                     <span>{project.name}</span>
-                    <span className="repo-period">{project.period}</span>
+                    <span className="repo-period">{project.period.split(" · ")[0]}</span>
                   </div>
                   <h3><Link href={`/work/${project.slug}`} className="card-case-link" data-track="project_open">{project.title}</Link></h3>
                   <p>{project.summary}</p>
@@ -369,7 +369,7 @@ export default function Home() {
                         </Link>
                       </CardTitle>
                       <CardDescription className="repo-archive-period">
-                        {project.period}
+                        {project.period.split(" · ")[0]}
                       </CardDescription>
                     </CardHeader>
                     <CardContent>

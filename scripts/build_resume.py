@@ -65,7 +65,7 @@ def build_resume():
                 "projects": [
                     {
                         "name": "[Freecoda](https://freecoda.com) · [GitHub](https://github.com/elliotshohet/freecoda)",
-                        "summary": "Open-source AI agent for conversations and project work across web, desktop, and terminal; public desktop beta with invite-only hosted AI. Designed and built the shared TypeScript agent, CLI, Electron app, and Next.js service. Added trusted-folder review, separate edit and command approvals, conversation sync, and PostgreSQL usage accounting.",
+                        "summary": "Built an open-source AI agent for conversations and project work, with a shared TypeScript core, Electron desktop app, Next.js service, and terminal CLI. Implemented workspace-scoped file tools, separate edit and command approvals, and encrypted conversation sync across clients. Built transactional PostgreSQL usage reservations and settlement to enforce user allowances and a global spending cap.",
                     }
                 ],
                 "education": [

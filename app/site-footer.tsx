@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Icon } from "./ui-icon";
 
 export function SiteFooter() {
@@ -19,7 +18,7 @@ export function SiteFooter() {
           <a href="/elliot-shohet-resume.pdf" target="_blank" rel="noopener noreferrer" data-track="resume_download">
             <Icon name="resume" />Résumé
           </a>
-          <Link href="/#about"><Icon name="up" />Back to top</Link>
+          <a href="#top"><Icon name="up" />Back to top</a>
         </nav>
       </div>
     </footer>
