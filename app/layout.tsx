@@ -1,5 +1,6 @@
 import { DM_Sans, Space_Grotesk } from "next/font/google";
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ConversionTracking } from "./conversion-tracking";
@@ -102,6 +103,26 @@ export default function RootLayout({
         <Analytics />
         <SpeedInsights />
         <ConversionTracking />
+        {process.env.NODE_ENV === "production" && (
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+              if (["elliotshohet.com", "www.elliotshohet.com"].includes(window.location.hostname)) {
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                window.gtag = gtag;
+                gtag('js', new Date());
+                gtag('config', 'G-YKPCVREDHD', {
+                  allow_google_signals: false,
+                  allow_ad_personalization_signals: false
+                });
+                var script = document.createElement('script');
+                script.async = true;
+                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-YKPCVREDHD';
+                document.head.appendChild(script);
+              }
+            `}
+          </Script>
+        )}
       </body>
     </html>
   );
