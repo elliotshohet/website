@@ -52,6 +52,7 @@
       "Next.js",
       "React Native",
       "Expo",
+      "CSS",
       "Tailwind CSS",
       "shadcn/ui",
       "Electron",
@@ -67,6 +68,7 @@
     "icon": "database",
     "skills": [
       "PostgreSQL",
+      "MongoDB",
       "Prisma",
       "Supabase",
       "Redis",
