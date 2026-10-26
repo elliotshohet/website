@@ -76,7 +76,7 @@ export const workProjects: Project[] = [
       },
       {
         "heading": "Shared identity and verified entitlements",
-        "text": "I unified web and mobile sign-in around Better Auth sessions and canonical user records, with mobile credentials stored through Expo SecureStore. I also implemented native Google sign-in bridges using Swift and Kotlin and direct Apple and Google subscription verification. Server checks bind purchase proofs to accounts and validate products, expiry, and store environment before updating entitlements."
+        "text": "I unified web and mobile sign-in around Better Auth sessions and canonical user records, with mobile credentials stored through Expo SecureStore. I also implemented native Google sign-in bridges and direct Apple and Google subscription verification. Server checks bind purchase proofs to accounts and validate products, expiry, and store environment before updating entitlements."
       },
       {
         "heading": "Bounded photo processing",

@@ -20,7 +20,7 @@ const displayFont = Space_Grotesk({
 });
 const title = "Elliot Shohet | Full-stack Engineer · AI Products";
 const description =
-  "Full-stack engineer building mobile, web, and AI coaching at Burn. TypeScript, React, Next.js, PostgreSQL, and LLM tools.";
+  "Full-stack product engineer building AI applications and developer tools. TypeScript, React, Next.js, Node.js, REST APIs, PostgreSQL, and LLM integrations.";
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },

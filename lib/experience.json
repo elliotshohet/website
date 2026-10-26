@@ -5,11 +5,11 @@
     "role": "Full-stack Engineer",
     "period": "Oct 2022 - Present",
     "bullets": [
-      "Built React Native/Expo and Next.js health workflows for meals, exercise, weight, and analytics on shared TypeScript services and PostgreSQL/Prisma records.",
-      "Implemented streaming AI coaching with saved conversation history, shared data tools, and durable retry safeguards against duplicate or interrupted record changes.",
-      "Exposed account-scoped Burn data and AI actions through OAuth-protected MCP for ChatGPT, with explicit write/history consent and revocation; integrated Google Health data.",
+      "Built React Native/Expo mobile and React/Next.js web interfaces for meal, exercise, weight, and analytics workflows on shared TypeScript services and PostgreSQL/Prisma data models.",
+      "Implemented streaming LLM coaching, persistent conversation history, and tool calling with retry safeguards against duplicate or interrupted data updates.",
+      "Built OAuth-protected Model Context Protocol (MCP) integrations for ChatGPT, with account-scoped APIs, explicit user consent, and access revocation; integrated Google Health data.",
       "Unified web and mobile authentication with Better Auth; built native Google sign-in and server-side Apple App Store and Google Play subscription verification.",
-      "Built Docker Compose and Android development workflows, release preflight safeguards, and regression coverage for authorization, billing, health data, and coaching retries."
+      "Built Docker Compose development workflows, release checks, and automated regression tests for authorization, billing, health data, and AI coaching retries."
     ],
     "siteHighlights": [
       "Mobile and web health workflows on shared TypeScript services",

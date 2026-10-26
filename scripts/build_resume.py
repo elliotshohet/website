@@ -19,7 +19,7 @@ def build_resume():
     skills = json.loads((ROOT / "lib" / "skills.json").read_text())
 
     # Keep the PDF aligned with the most relevant, verified site experience.
-    bullet_indices = {"burn": (0, 1, 2, 3), "niftys": (0, 1), "hypernet": (0, 1, 2), "i2chain": (0,)}
+    bullet_indices = {"burn": (0, 1, 2, 3, 4), "niftys": (0, 1), "hypernet": (0, 1, 2), "i2chain": (0,)}
     roles = [
         {
             "company": job["name"],
@@ -29,14 +29,26 @@ def build_resume():
         }
         for job in experience
     ]
-    skill_labels = {
-        "Large language models (LLMs)": "LLMs",
-        "Model Context Protocol (MCP)": "MCP",
+    skill_labels = {}
+    # Keep the PDF focused on product engineering, creator tools, and AI roles.
+    # Every selected keyword must also exist in the canonical site skills.
+    resume_skills = {
+        "Frontend": ["React", "Next.js", "CSS", "Tailwind CSS", "Redux", "React Native", "Electron", "Three.js"],
+        "Backend": ["Node.js", "Express", "REST APIs", "WebSockets", "OAuth"],
+        "Data": ["PostgreSQL", "MongoDB", "Redis", "SQL", "NoSQL", "Prisma"],
+        "DevOps": ["Docker", "CI/CD", "GitHub Actions", "AWS Lambda", "Amazon EC2", "Linux", "Git", "Vercel"],
+        "Testing": ["End-to-end testing", "Playwright", "Jest", "Vitest", "Mocha", "Chai"],
+        "AI": ["Large language models (LLMs)", "OpenAI", "AI SDK", "Tool calling", "Model Context Protocol (MCP)", "AI evaluations"],
+        "Languages": ["TypeScript", "JavaScript", "Python", "SQL", "Solidity", "Shell scripting"],
     }
+    for group in skills:
+        unknown = set(resume_skills[group["title"]]) - set(group["skills"])
+        if unknown:
+            raise ValueError(f"Resume skills missing from canonical data: {unknown}")
     skill_rows = [
         {"label": group["title"], "details": ", ".join(
             skill_labels.get(skill, skill)
-            for skill in group["skills"]
+            for skill in resume_skills[group["title"]]
         )}
         for group in skills
     ]
@@ -55,10 +67,10 @@ def build_resume():
             ],
             "sections": {
                 "profile": [
-                    "Full-stack Engineer taking 0→1 web, mobile, and desktop products from idea to production. "
-                    "Owns architecture and releases across interfaces, APIs, and data; "
-                    "has led small engineering teams. Builds practical AI coaching and agent workflows "
-                    "with a focus on reliable, efficient model usage."
+                    "Full-stack product engineer building AI applications and developer tools with TypeScript, React, "
+                    "Node.js, and PostgreSQL. Owns architecture, APIs, authentication, and production releases "
+                    "across web, mobile, and desktop. Built developer SDKs, LLM tool integrations, and payment "
+                    "infrastructure; led a small engineering team."
                 ],
                 "experience": roles,
                 "Skills": skill_rows,

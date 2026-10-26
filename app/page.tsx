@@ -29,7 +29,7 @@ const skillGroups = canonicalSkills as {
   skills: string[];
 }[];
 const orderedSkillGroups = [...skillGroups].sort((a, b) => {
-  const order = ["Frontend", "AI", "Languages", "Backend", "Data", "DevOps", "Testing"];
+  const order = ["Frontend", "Backend", "Data", "DevOps", "Testing", "AI", "Languages"];
   return order.indexOf(a.title) - order.indexOf(b.title);
 });
 const profile = {
@@ -45,7 +45,7 @@ const profile = {
     url: "https://elliotshohet.com",
     jobTitle: "Full-stack Engineer",
     description:
-      "Full-stack engineer building health tracking and AI coaching at Burn, with experience in mobile, web, APIs, payment infrastructure, and small-team leadership.",
+      "Full-stack product engineer building AI applications and developer tools with TypeScript, React, Node.js, and PostgreSQL. Experience owning architecture, APIs, authentication, and releases across web, mobile, and desktop.",
     sameAs: [linkedin, github],
     email: "elliot.shohet@gmail.com",
     homeLocation: { "@type": "Place", name: "Los Angeles Metropolitan Area" },
@@ -81,8 +81,8 @@ export default function Home() {
               </h1>
               <p className="intro-title">Full-stack Engineer</p>
               <p className="intro-description">
-                I build AI products across web, mobile, and desktop,
-                from the interface to the services behind them.
+                I build AI products and developer tools with TypeScript,
+                React, and Node.js—from the interface and APIs to production.
               </p>
               <div className="actions">
                 <Magnetic>
